@@ -1,0 +1,1 @@
+<span class="flex w-full items-center rounded bg-yellow-100 p-6 justify-center text-3xl font-medium text-yellow-800">Coming Soon</span>
