@@ -12,7 +12,7 @@
     let copied = false;
 
     function copyToClipboard() {
-        let citation = `${name} (${id}), FamilyTree, www.familysearch.org, accessed ${moment(date).format('D MMMM YYYY')}.`;
+        let citation = `Personal Interview of ${interviewee} by ${interviewer} on ${moment(date).format('D MMMM YYYY')}, in possession of ${interviewer}, [address for private use], ${city != "" ? city : ""}${city == "" ? county + " County" : ", " + county}, ${state}.`
         copied = true;
         navigator.clipboard.writeText(citation);
     }
