@@ -16,23 +16,23 @@
 </script>
 
 <div id="results" class="mt-4 p-4 border border-gray-300 rounded-md shadow-sm">
-    <div class="flex gap-3">
+    <div class="flex flex-col md:flex-row sm:gap-3">
         <!-- Name -->
-        <div class="w-[35%]">
+        <div class="w-[100%] mb-3 sm:w-[35%] sm:mb-0">
             <label for="name" class="inline-block text-sm font-medium text-gray-700">Ancestor's Name</label>
             <div class="mt-1">
             <input type="text" bind:value={name} name="name" id="name" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" placeholder="John Doe" aria-describedby="name-description">
             </div>
         </div>
         <!-- FamilySearch ID -->
-        <div class="w-[35%]">
+        <div class="w-[100%] mb-3 sm:w-[35%] sm:mb-0">
             <label for="fID" class="block text-sm font-medium text-gray-700">FamilySearch ID</label>
             <div class="mt-1">
             <input type="text" bind:value={id} name="fID" id="fID" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" placeholder="ABCD-123" aria-describedby="fID-description">
             </div>
         </div>
         <!-- Date Accessed -->
-        <div class="">
+        <div>
             <p class="block text-sm font-medium text-gray-700">Date Accessed</p>
             <DatePicker datePickerType="single" bind:value={date} on:change light>
                 <DatePickerInput  

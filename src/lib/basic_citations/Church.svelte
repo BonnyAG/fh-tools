@@ -24,41 +24,43 @@
 <div id="results" class="mt-4 p-4 border border-gray-300 rounded-md shadow-sm">
     <div>
         <!-- Name, Date, Place -->
-        <div class="flex gap-3 mb-2">
+        <div class="flex flex-col md:flex-row gap-3 mb-2">
             <!-- Name -->
-            <div class="w-[35%]">
+            <div class="w-[100%] md:w-[35%]">
                 <label for="name" class="inline-block text-sm font-medium text-gray-700">Ancestor's Name</label>
                 <div class="mt-1">
                 <input type="text" bind:value={name} name="name" id="name" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" placeholder="John Doe" aria-describedby="name-description">
                 </div>
             </div>
-            <!-- City -->
-            <div class="w-[35%]">
-                <label for="name" class="inline-block text-sm font-medium text-gray-700">City</label>
-                <div class="mt-1">
-                <input type="text" bind:value={city} name="name" id="name" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" aria-describedby="name-description">
+            <div class="flex gap-2">
+                <!-- City -->
+                <div class="w-[35%]">
+                    <label for="name" class="inline-block text-sm font-medium text-gray-700">City</label>
+                    <div class="mt-1">
+                    <input type="text" bind:value={city} name="name" id="name" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" aria-describedby="name-description">
+                    </div>
                 </div>
-            </div>
-            <!-- County -->
-            <div class="w-[35%]">
-                <label for="name" class="inline-block text-sm font-medium text-gray-700">County</label>
-                <div class="mt-1">
-                <input type="text" bind:value={county} name="name" id="name" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" aria-describedby="name-description">
+                <!-- County -->
+                <div class="w-[35%]">
+                    <label for="name" class="inline-block text-sm font-medium text-gray-700">County</label>
+                    <div class="mt-1">
+                    <input type="text" bind:value={county} name="name" id="name" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" aria-describedby="name-description">
+                    </div>
                 </div>
-            </div>
-            <!-- State -->
-            <div class="w-[35%]">
-                <label for="name" class="inline-block text-sm font-medium text-gray-700">State</label>
-                <div class="mt-1">
-                <input type="text" bind:value={state} name="name" id="name" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" aria-describedby="name-description">
+                <!-- State -->
+                <div class="w-[35%]">
+                    <label for="name" class="inline-block text-sm font-medium text-gray-700">State</label>
+                    <div class="mt-1">
+                    <input type="text" bind:value={state} name="name" id="name" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" aria-describedby="name-description">
+                    </div>
                 </div>
             </div>
         </div>
 
         <!-- Event Section -->
-        <div class="flex gap-3 mb-2">
+        <div class="flex flex-col md:flex-row gap-3 mb-2">
             <!-- Type of event -->
-            <div class="w-[20%]">
+            <div class="w-[100%] md:w-[20%]">
                 <label for="type" class="block text-sm font-medium text-gray-700">Citation Type</label>
                 <select bind:value={type} id="type" name="type" class="mt-1 block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
                 <option value="baptism" selected>Baptism</option>
@@ -82,7 +84,7 @@
                 </DatePicker>
             </div>
             <!-- Collection Name -->
-            <div class="w-[60%]">
+            <div class="w-[100%] md:w-[60%]">
                 <label for="name" class="inline-block text-sm font-medium text-gray-700">Collection Name</label>
                 <div class="mt-1">
                 <input type="text" bind:value={collectionName} name="name" id="name" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" placeholder="John Doe" aria-describedby="name-description">
@@ -91,9 +93,9 @@
         </div>
         
         <!-- Site Section -->
-        <div class="flex gap-3 mb-2">
+        <div class="flex flex-col md:flex-row gap-3 mb-2">
             <!-- Site -->
-            <div class="w-[35%]">
+            <div class="w-[100%] md:w-[35%]">
                 <label for="fID" class="block text-sm font-medium text-gray-700">Site Accessed</label>
                 <div class="mt-1">
                 <input type="text" bind:value={site} name="fID" id="fID" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" placeholder="ABCD-123" aria-describedby="fID-description">

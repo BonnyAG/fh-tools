@@ -1,15 +1,21 @@
 <script>
   import CitationContainer from './lib/CitationContainer.svelte';
 
+  let sidebarOpen = false;
+
   function comingSoon() {
     alert("Coming Soon");
+  }
+
+  function updateSidebar() {
+    sidebarOpen = !sidebarOpen;
   }
 </script>
 
 <main>
   <div>
     <!-- Off-canvas menu for mobile, show/hide based on off-canvas menu state. -->
-    <div class="relative z-40 md:hidden" role="dialog" aria-modal="true">
+    <div class="relative z-40 md:hidden {sidebarOpen ? "transition-opacity ease-linear duration-300 opacity-100": "transition-opacity ease-linear duration-300 opacity-0 hidden"}" role="dialog" aria-modal="true">
       <!--
         Off-canvas menu backdrop, show/hide based on off-canvas menu state.
   
@@ -22,7 +28,7 @@
       -->
       <div class="fixed inset-0 bg-gray-600 bg-opacity-75"></div>
   
-      <div class="fixed inset-0 z-40 flex">
+      <div class="fixed inset-0 z-40 flex {sidebarOpen ? "transition ease-in-out duration-300 transform translate-x-0" : "-translate-x-full transition ease-in-out duration-300 transform"}">
         <!--
           Off-canvas menu, show/hide based on off-canvas menu state.
   
@@ -33,7 +39,7 @@
             From: "translate-x-0"
             To: "-translate-x-full"
         -->
-        <div class="relative flex w-full max-w-xs flex-1 flex-col bg-white">
+        <div class="relative flex w-full max-w-xs flex-1 flex-col bg-white {sidebarOpen ? "ease-in-out duration-300 opacity-100" : "ease-in-out duration-300 opacity-0"}">
           <!--
             Close button, show/hide based on off-canvas menu state.
   
@@ -45,7 +51,7 @@
               To: "opacity-0"
           -->
           <div class="absolute top-0 right-0 -mr-12 pt-2">
-            <button type="button" class="ml-1 flex h-10 w-10 items-center justify-center rounded-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+            <button on:click={updateSidebar} type="button" class="ml-1 flex h-10 w-10 items-center justify-center rounded-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
               <span class="sr-only">Close sidebar</span>
               <!-- Heroicon name: outline/x-mark -->
               <svg class="h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
@@ -56,7 +62,7 @@
   
           <div class="h-0 flex-1 overflow-y-auto pt-5 pb-4">
             <div class="flex flex-shrink-0 items-center px-4">
-              <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="Your Company">
+              <span class="p-4 bg-lime-100 rounded-md">🌳</span>
             </div>
             <nav class="mt-5 space-y-1 px-2">
               <!-- Current: "bg-gray-100 text-gray-900", Default: "text-gray-600 hover:bg-gray-50 hover:text-gray-900" -->
@@ -124,7 +130,7 @@
     </div>
     <div class="flex flex-1 flex-col md:pl-64">
       <div class="sticky top-0 z-10 bg-white pl-1 pt-1 sm:pl-3 sm:pt-3 md:hidden">
-        <button type="button" class="-ml-0.5 -mt-0.5 inline-flex h-12 w-12 items-center justify-center rounded-md text-gray-500 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+        <button type="button" on:click={updateSidebar}  class="-ml-0.5 -mt-0.5 inline-flex h-12 w-12 items-center justify-center rounded-md text-gray-500 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
           <span class="sr-only">Open sidebar</span>
           <!-- Heroicon name: outline/bars-3 -->
           <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">

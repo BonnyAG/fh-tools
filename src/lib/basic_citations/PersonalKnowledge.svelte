@@ -21,21 +21,24 @@
 <div id="results" class="mt-4 p-4 border border-gray-300 rounded-md shadow-sm">
     <div >
         <!-- Interview Section -->
-        <div class="flex gap-3 mb-2">
-            <!-- Interviewee -->
-            <div class="w-[35%]">
-                <label for="name" class="inline-block text-sm font-medium text-gray-700">Interviewee</label>
-                <div class="mt-1">
-                <input type="text" bind:value={interviewee} name="name" id="name" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" placeholder="John Doe" aria-describedby="name-description">
+        <div class="flex flex-col md:flex-row gap-3 mb-2">
+            <div class="flex gap-2">
+                <!-- Interviewee -->
+                <div class="w-[50%] md:w-auto">
+                    <label for="name" class="inline-block text-sm font-medium text-gray-700">Interviewee</label>
+                    <div class="mt-1">
+                    <input type="text" bind:value={interviewee} name="name" id="name" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" placeholder="John Doe" aria-describedby="name-description">
+                    </div>
+                </div>
+                <!-- Interviewer -->
+                <div class="w-[50%] md:w-auto">
+                    <label for="fID" class="block text-sm font-medium text-gray-700">Interviewer</label>
+                    <div class="mt-1">
+                    <input type="text" bind:value={interviewer} name="fID" id="fID" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" placeholder="ABCD-123" aria-describedby="fID-description">
+                    </div>
                 </div>
             </div>
-            <!-- Interviewer -->
-            <div class="w-[35%]">
-                <label for="fID" class="block text-sm font-medium text-gray-700">Interviewer</label>
-                <div class="mt-1">
-                <input type="text" bind:value={interviewer} name="fID" id="fID" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" placeholder="ABCD-123" aria-describedby="fID-description">
-                </div>
-            </div>
+            
             <!-- Date of Interview -->
             <div class="">
                 <p class="block text-sm font-medium text-gray-700">Interview Date</p>
