@@ -32,7 +32,7 @@
                 <input type="text" bind:value={name} name="name" id="name" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" placeholder="John Doe" aria-describedby="name-description">
                 </div>
             </div>
-            <div class="flex gap-2">
+            <div class="flex gap-2 md:w-[65%]">
                 <!-- City -->
                 <div class="w-[35%]">
                     <label for="name" class="inline-block text-sm font-medium text-gray-700">City</label>

@@ -28,23 +28,22 @@
     <div>
         <!-- Name Section -->
         <div class="flex flex-col md:flex-row gap-3 md:gap-0 mb-2">
-            <div class="flex mb-3 gap-2 md:mb-0 md:w-[65%]">
+            <div class="flex mb-3 gap-2 md:mb-0 md:w-[65%] md:mr-2">
                 <!-- Father First Name -->
-                <div class="w-[50%] md:w-w-auto">
+                <div class="w-[50%]">
                     <label for="name" class="inline-block text-sm font-medium text-gray-700">Father's First Name</label>
                     <div class="mt-1">
                     <input type="text" bind:value={fatherFirstName} name="name" id="name" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" aria-describedby="name-description">
                     </div>
                 </div>
                 <!-- Mother First Name -->
-                <div class="w-[50%] md:w-auto">
+                <div class="w-[50%]">
                     <label for="name" class="inline-block text-sm font-medium text-gray-700">Mother's First Name</label>
                     <div class="mt-1">
                     <input type="text" bind:value={motherFirstName} name="name" id="name" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" aria-describedby="name-description">
                     </div>
                 </div>
             </div>
-            
             <!-- Last Name -->
             <div class="w-[100%] mb-3 md:w-[35%] md:mb-0">
                 <label for="name" class="inline-block text-sm font-medium text-gray-700">Last Name</label>
@@ -80,33 +79,33 @@
         </div>
 
         <!-- Census Section -->
-        <div class="flex flex-col md:flex-row gap-3 mb-2">
-            <div class="flex mb-3 gap-2 md:mb-0">
+        <div class="flex flex-col md:flex-row gap-3 mb-2 w-[100%]">
+            <div class="flex mb-3 gap-2 md:mb-0 md:w-[50%]">
                 <!-- Census Year -->
-                <div class="w-[50%] md:w-auto">
+                <div class="w-[50%]">
                     <label for="name" class="inline-block text-sm font-medium text-gray-700">Census Year</label>
                     <div class="mt-1">
                     <input type="text" bind:value={censusYear} name="name" id="name" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" aria-describedby="name-description">
                     </div>
                 </div>
                 <!-- Enumeration District -->
-                <div class="w-[50%] md:w-auto">
+                <div class="w-[50%]">
                     <label for="name" class="inline-block text-sm font-medium text-gray-700">Enumeration District</label>
                     <div class="mt-1">
                     <input type="text" bind:value={ed} name="name" id="name" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" aria-describedby="name-description">
                     </div>
                 </div>
             </div>
-            <div class="flex mb-3 gap-2 md:mb-0">
+            <div class="flex mb-3 gap-2 md:mb-0 md:w-[50%]">
                 <!-- Folio -->
-                <div class="w-[50%] md:w-auto">
+                <div class="w-[50%]">
                     <label for="name" class="inline-block text-sm font-medium text-gray-700">Folio #</label>
                     <div class="mt-1">
                     <input type="text" bind:value={folio} name="name" id="name" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" aria-describedby="name-description">
                     </div>
                 </div>
                 <!-- Page -->
-                <div class="w-[50%] md:w-auto">
+                <div class="w-[50%]">
                     <label for="name" class="inline-block text-sm font-medium text-gray-700">Page #</label>
                     <div class="mt-1">
                     <input type="text" bind:value={page} name="name" id="name" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" aria-describedby="name-description">
