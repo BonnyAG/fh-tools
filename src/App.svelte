@@ -15,7 +15,7 @@
 <main>
   <div>
     <!-- Off-canvas menu for mobile, show/hide based on off-canvas menu state. -->
-    <div class="relative z-40 md:hidden {sidebarOpen ? "transition-opacity ease-linear duration-300 opacity-100": "transition-opacity ease-linear duration-300 opacity-0 hidden"}" role="dialog" aria-modal="true">
+    <div class="relative z-40 transition-opacity md:hidden {sidebarOpen ? "ease-linear duration-300 opacity-100": "ease-linear duration-300 opacity-0 z-0"}" role="dialog" aria-modal="true">
       <!--
         Off-canvas menu backdrop, show/hide based on off-canvas menu state.
   
@@ -28,7 +28,7 @@
       -->
       <div class="fixed inset-0 bg-gray-600 bg-opacity-75"></div>
   
-      <div class="fixed inset-0 z-40 flex {sidebarOpen ? "transition ease-in-out duration-300 transform translate-x-0" : "-translate-x-full transition ease-in-out duration-300 transform"}">
+      <div class="fixed inset-0 z-40 flex transition {sidebarOpen ? " ease-in-out duration-300 transform translate-x-0" : "-translate-x-full ease-in-out duration-300 transform"}">
         <!--
           Off-canvas menu, show/hide based on off-canvas menu state.
   
@@ -39,7 +39,7 @@
             From: "translate-x-0"
             To: "-translate-x-full"
         -->
-        <div class="relative flex w-full max-w-xs flex-1 flex-col bg-white {sidebarOpen ? "ease-in-out duration-300 opacity-100" : "ease-in-out duration-300 opacity-0"}">
+        <div class="relative flex w-full max-w-xs flex-1 flex-col bg-white transition {sidebarOpen ? "ease-in-out duration-300 opacity-100" : "ease-in-out duration-300 opacity-0"}">
           <!--
             Close button, show/hide based on off-canvas menu state.
   
@@ -63,6 +63,7 @@
           <div class="h-0 flex-1 overflow-y-auto pt-5 pb-4">
             <div class="flex flex-shrink-0 items-center px-4">
               <span class="p-4 bg-lime-100 rounded-md">🌳</span>
+              <h1 class="font-bold text-2xl ml-2">FH Tools</h1>
             </div>
             <nav class="mt-5 space-y-1 px-2">
               <!-- Current: "bg-gray-100 text-gray-900", Default: "text-gray-600 hover:bg-gray-50 hover:text-gray-900" -->
@@ -78,7 +79,7 @@
                 Citation Builder
               </a>
   
-              <button on:click={comingSoon} class="text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-base font-medium rounded-md">
+              <button on:click={comingSoon} class="text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-base w-full font-medium rounded-md">
                 <!-- Heroicon name: outline/users -->
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="text-gray-400 group-hover:text-gray-500 mr-4 flex-shrink-0 h-6 w-6">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
@@ -101,7 +102,8 @@
       <div class="flex min-h-0 flex-1 flex-col border-r border-gray-200 bg-white">
         <div class="flex flex-1 flex-col overflow-y-auto pt-5 pb-4">
           <div class="flex flex-shrink-0 items-center px-4">
-            <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="Your Company">
+            <span class="p-4 bg-lime-100 rounded-md">🌳</span>
+            <h1 class="font-bold text-2xl ml-2">F.H. Tools</h1>
           </div>
           <nav class="mt-5 flex-1 space-y-1 bg-white px-2">
             <!-- Current: "bg-gray-100 text-gray-900", Default: "text-gray-600 hover:bg-gray-50 hover:text-gray-900" -->
@@ -139,7 +141,7 @@
         </button>
       </div>
       <main class="flex-1">
-        <div class="py-6">
+        <div class="py-6 z-10">
           <!-- Have components after this -->
           <CitationContainer />
         </div>
