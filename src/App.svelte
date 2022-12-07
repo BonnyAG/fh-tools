@@ -145,7 +145,7 @@
           <!-- Have components after this -->
           <CitationContainer />
         </main>
-        <footer class="bg-gradient-to-t from-white via-white to-transparent z-30 sticky bottom-0 text-center w-[95%] sm:w-auto sm:mb-0 sm:text-right h-10 sm:mr-8">
+        <footer class="bg-gradient-to-t from-white via-white to-transparent mx-auto z-30 sticky bottom-0 text-center w-[95%] sm:w-auto sm:mb-0 sm:text-right h-10 sm:mr-8">
           <p class="text-slate-400">&copy; {new Date().getFullYear()} Adam Bonny. All rights reserved. Built with <a class="text-blue-600 hover:text-blue-400 hover:underline" href="https://github.com/BonnyAG/fh-tools">Github</a> & <a class="text-blue-600 hover:text-blue-400 hover:underline" href="https://vercel.com">Vercel</a></p>
         </footer>
       </div>
