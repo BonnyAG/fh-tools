@@ -33,14 +33,14 @@
                 <div class="w-[50%] md:w-w-auto">
                     <label for="name" class="inline-block text-sm font-medium text-gray-700">Father's First Name</label>
                     <div class="mt-1">
-                    <input type="text" bind:value={fatherFirstName} name="name" id="name" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" aria-describedby="name-description">
+                    <input type="text" bind:value={fatherFirstName} name="name" id="name" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" aria-describedby="name-description">
                     </div>
                 </div>
                 <!-- Mother First Name -->
                 <div class="w-[50%] md:w-auto">
                     <label for="name" class="inline-block text-sm font-medium text-gray-700">Mother's First Name</label>
                     <div class="mt-1">
-                    <input type="text" bind:value={motherFirstName} name="name" id="name" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" aria-describedby="name-description">
+                    <input type="text" bind:value={motherFirstName} name="name" id="name" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" aria-describedby="name-description">
                     </div>
                 </div>
             </div>
@@ -49,7 +49,7 @@
             <div class="w-[100%] mb-3 md:w-[35%] md:mb-0">
                 <label for="name" class="inline-block text-sm font-medium text-gray-700">Last Name</label>
                 <div class="mt-1">
-                <input type="text" bind:value={lastName} name="name" id="name" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" aria-describedby="name-description">
+                <input type="text" bind:value={lastName} name="name" id="name" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" aria-describedby="name-description">
                 </div>
             </div>
         </div>
@@ -60,21 +60,21 @@
             <div class="w-[35%]">
                 <label for="name" class="inline-block text-sm font-medium text-gray-700">City</label>
                 <div class="mt-1">
-                <input type="text" bind:value={city} name="name" id="name" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" aria-describedby="name-description">
+                <input type="text" bind:value={city} name="name" id="name" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" aria-describedby="name-description">
                 </div>
             </div>
             <!-- County -->
             <div class="w-[35%]">
                 <label for="name" class="inline-block text-sm font-medium text-gray-700">County</label>
                 <div class="mt-1">
-                <input type="text" bind:value={county} name="name" id="name" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" aria-describedby="name-description">
+                <input type="text" bind:value={county} name="name" id="name" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" aria-describedby="name-description">
                 </div>
             </div>
             <!-- State -->
             <div class="w-[35%]">
                 <label for="name" class="inline-block text-sm font-medium text-gray-700">State</label>
                 <div class="mt-1">
-                <input type="text" bind:value={state} name="name" id="name" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" aria-describedby="name-description">
+                <input type="text" bind:value={state} name="name" id="name" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" aria-describedby="name-description">
                 </div>
             </div>
         </div>
@@ -86,14 +86,14 @@
                 <div class="w-[50%] md:w-auto">
                     <label for="name" class="inline-block text-sm font-medium text-gray-700">Census Year</label>
                     <div class="mt-1">
-                    <input type="text" bind:value={censusYear} name="name" id="name" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" aria-describedby="name-description">
+                    <input type="text" bind:value={censusYear} name="name" id="name" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" aria-describedby="name-description">
                     </div>
                 </div>
                 <!-- Enumeration District -->
                 <div class="w-[50%] md:w-auto">
                     <label for="name" class="inline-block text-sm font-medium text-gray-700">Enumeration District</label>
                     <div class="mt-1">
-                    <input type="text" bind:value={ed} name="name" id="name" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" aria-describedby="name-description">
+                    <input type="text" bind:value={ed} name="name" id="name" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" aria-describedby="name-description">
                     </div>
                 </div>
             </div>
@@ -102,14 +102,14 @@
                 <div class="w-[50%] md:w-auto">
                     <label for="name" class="inline-block text-sm font-medium text-gray-700">Folio #</label>
                     <div class="mt-1">
-                    <input type="text" bind:value={folio} name="name" id="name" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" aria-describedby="name-description">
+                    <input type="text" bind:value={folio} name="name" id="name" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" aria-describedby="name-description">
                     </div>
                 </div>
                 <!-- Page -->
                 <div class="w-[50%] md:w-auto">
                     <label for="name" class="inline-block text-sm font-medium text-gray-700">Page #</label>
                     <div class="mt-1">
-                    <input type="text" bind:value={page} name="name" id="name" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" aria-describedby="name-description">
+                    <input type="text" bind:value={page} name="name" id="name" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" aria-describedby="name-description">
                     </div>
                 </div>
             </div>
@@ -121,7 +121,7 @@
             <div class="w-[100%] mb-3 md:w-[35%] md:mb-0">
                 <label for="fID" class="block text-sm font-medium text-gray-700">Site Accessed</label>
                 <div class="mt-1">
-                <input type="text" bind:value={site} name="fID" id="fID" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" placeholder="ABCD-123" aria-describedby="fID-description">
+                <input type="text" bind:value={site} name="fID" id="fID" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" placeholder="ABCD-123" aria-describedby="fID-description">
                 </div>
             </div>
             <!-- Date Accessed -->
@@ -130,7 +130,7 @@
                 <DatePicker datePickerType="single" bind:value={date} on:change light>
                     <DatePickerInput  
                         hideLabel
-                        class="w-full text-sm font-medium text-gray-700 border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                        class="w-full text-sm font-medium text-gray-700 border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
                         labelText="Meeting date"
                         placeholder="mm/dd/yyyy"
                     />

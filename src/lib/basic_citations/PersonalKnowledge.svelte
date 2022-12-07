@@ -27,14 +27,14 @@
                 <div class="w-[50%] md:w-auto">
                     <label for="name" class="inline-block text-sm font-medium text-gray-700">Interviewee</label>
                     <div class="mt-1">
-                    <input type="text" bind:value={interviewee} name="name" id="name" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" placeholder="John Doe" aria-describedby="name-description">
+                    <input type="text" bind:value={interviewee} name="name" id="name" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" placeholder="John Doe" aria-describedby="name-description">
                     </div>
                 </div>
                 <!-- Interviewer -->
                 <div class="w-[50%] md:w-auto">
                     <label for="fID" class="block text-sm font-medium text-gray-700">Interviewer</label>
                     <div class="mt-1">
-                    <input type="text" bind:value={interviewer} name="fID" id="fID" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" placeholder="ABCD-123" aria-describedby="fID-description">
+                    <input type="text" bind:value={interviewer} name="fID" id="fID" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" placeholder="ABCD-123" aria-describedby="fID-description">
                     </div>
                 </div>
             </div>
@@ -45,7 +45,7 @@
                 <DatePicker datePickerType="single" bind:value={date} on:change light>
                     <DatePickerInput  
                         hideLabel
-                        class="w-full text-sm font-medium text-gray-700 border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                        class="w-full text-sm font-medium text-gray-700 border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
                         labelText="Meeting date"
                         placeholder="mm/dd/yyyy"
                     />
@@ -59,21 +59,21 @@
             <div class="w-[35%]">
                 <label for="name" class="inline-block text-sm font-medium text-gray-700">City</label>
                 <div class="mt-1">
-                <input type="text" bind:value={city} name="name" id="name" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" aria-describedby="name-description">
+                <input type="text" bind:value={city} name="name" id="name" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" aria-describedby="name-description">
                 </div>
             </div>
             <!-- County -->
             <div class="w-[35%]">
                 <label for="name" class="inline-block text-sm font-medium text-gray-700">County</label>
                 <div class="mt-1">
-                <input type="text" bind:value={county} name="name" id="name" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" aria-describedby="name-description">
+                <input type="text" bind:value={county} name="name" id="name" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" aria-describedby="name-description">
                 </div>
             </div>
             <!-- State -->
             <div class="w-[35%]">
                 <label for="name" class="inline-block text-sm font-medium text-gray-700">State</label>
                 <div class="mt-1">
-                <input type="text" bind:value={state} name="name" id="name" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" aria-describedby="name-description">
+                <input type="text" bind:value={state} name="name" id="name" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" aria-describedby="name-description">
                 </div>
             </div>
         </div>

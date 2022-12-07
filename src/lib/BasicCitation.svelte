@@ -10,7 +10,7 @@
 
 <div>
     <label for="type" class="block text-sm font-medium text-gray-700">Citation Type</label>
-    <select bind:value={citationType} id="type" name="type" class="mt-1 block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
+    <select bind:value={citationType} id="type" name="type" class="mt-1 block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-blue-500 focus:outline-none focus:ring-blue-500 sm:text-sm">
       <option selected>Family Tree Personal</option>
       <option>Family Tree Household</option>
       <option>Census</option>
