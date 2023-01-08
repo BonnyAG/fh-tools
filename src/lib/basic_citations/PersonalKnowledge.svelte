@@ -3,6 +3,7 @@
     import moment from 'moment';
     import { DatePicker, DatePickerInput } from "carbon-components-svelte";
 
+    let type = "interview";
     let interviewee = "John Doe";
     let interviewer = "James Robert"
     let date = new Date();
@@ -12,8 +13,9 @@
     let copied = false;
 
     function copyToClipboard() {
-        let citation = `Personal Interview of ${interviewee} by ${interviewer} on ${moment(date).format('D MMMM YYYY')}, in possession of ${interviewer}, [address for private use], ${city != "" ? city : ""}${city == "" ? county + " County" : ", " + county}, ${state}.`
-        copied = true;
+        let citation = `Personal ${type == "interview" ? "Interview of" : "Email from"} ${interviewee} ${type == "interview" ? "by" : "to"} ${interviewer} on ${moment(date).format('D MMMM YYYY')}, in possession of ${interviewer}, [address for private use], ${city != "" ? city : ""}${city == "" ? county + " County" : ", " + county}, ${state}.`
+        /*let citation = `Personal ${type == "interview" ? "Interview of" : "Email from"} ${interviewee} ${type == "interview" ? "by" : "to"} ${interviewer} on ${moment(date).format('D MMMM YYYY')}, in possession of ${interviewer}, [address for private use], ${city != "" ? city : ""}${city == "" ? county + " County" : ", " + county}, ${state}.`
+        copied = true;*/
         navigator.clipboard.writeText(citation);
     }
 </script>
@@ -23,16 +25,24 @@
         <!-- Interview Section -->
         <div class="flex flex-col md:flex-row gap-3 mb-2">
             <div class="flex gap-2">
+                <!-- Type of Personal Knowledge -->
+                <div class="w-[100%] md:w-auto">
+                    <label for="type" class="block text-sm font-medium text-gray-700">Type</label>
+                    <select bind:value={type} id="type" name="type" class="mt-1 block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-blue-500 focus:outline-none focus:ring-blue-500 sm:text-sm">
+                    <option value="interview" selected>Interview</option>
+                    <option value="email">Email</option>
+                    </select>
+                </div>
                 <!-- Interviewee -->
                 <div class="w-[50%] md:w-auto">
-                    <label for="name" class="inline-block text-sm font-medium text-gray-700">Interviewee</label>
+                    <label for="name" class="inline-block text-sm font-medium text-gray-700">{type == "interview" ? "Interviewee" : "Email From"}</label>
                     <div class="mt-1">
                     <input type="text" bind:value={interviewee} name="name" id="name" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" placeholder="John Doe" aria-describedby="name-description">
                     </div>
                 </div>
                 <!-- Interviewer -->
                 <div class="w-[50%] md:w-auto">
-                    <label for="fID" class="block text-sm font-medium text-gray-700">Interviewer</label>
+                    <label for="fID" class="block text-sm font-medium text-gray-700">{type == "interview" ? "Interviewer" : "Email To"}</label>
                     <div class="mt-1">
                     <input type="text" bind:value={interviewer} name="fID" id="fID" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" placeholder="ABCD-123" aria-describedby="fID-description">
                     </div>
@@ -82,7 +92,7 @@
     <button 
       on:click={copyToClipboard}
       class="mt-4 w-full inline-flex text-left rounded-md hover:bg-gray-200 transition bg-gray-100 px-3 py-2 text-sm font-medium text-gray-800">
-      {`Personal Interview of ${interviewee} by ${interviewer} on ${moment(date).format('D MMMM YYYY')}, in possession of ${interviewer}, [address for private use], ${city != "" ? city : ""}${city == "" ? county + " County" : ", " + county}, ${state}.`}
+      {`Personal ${type == "interview" ? "Interview of" : "Email from"} ${interviewee} ${type == "interview" ? "by" : "to"} ${interviewer} on ${moment(date).format('D MMMM YYYY')}, in possession of ${interviewer}, [address for private use], ${city != "" ? city : ""}${city == "" ? county + " County" : ", " + county}, ${state}.`}
     </button>
     <p class="{!copied ? "hidden" : ""} text-sm text-green-600 mt-2 font-bold">Copied Citation!</p>
 </div>
