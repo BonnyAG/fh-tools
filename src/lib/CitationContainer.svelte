@@ -1,11 +1,11 @@
 <script>
-    import AdvancedCitation from './AdvancedCitation.svelte';
-import BasicCitation from './BasicCitation.svelte'
-    let advancedMode = false;
+  import AdvancedCitation from './AdvancedCitation.svelte';
+  import BasicCitation from './BasicCitation.svelte'
+  let advancedMode = false;
 
-    function handleToggle() {
-        advancedMode = advancedMode == true ? false : true;
-    }
+  function handleToggle() {
+      advancedMode = advancedMode == true ? false : true;
+  }
 </script>
 
 <div class="mx-auto max-w-7xl px-4 sm:px-6 md:px-8">

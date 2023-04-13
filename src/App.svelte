@@ -62,7 +62,7 @@
   
           <div class="h-0 flex-1 overflow-y-auto pt-5 pb-4">
             <div class="flex flex-shrink-0 items-center px-4">
-              <span class="p-4 bg-blue-100 rounded-md">🌳</span>
+              <img class="p-2 bg-blue-100 w-14 rounded-full" src="/fhtools_logo.png" alt="F.H. Tools Logo"/>
               <h1 class="font-bold text-2xl ml-2">F.H. Tools</h1>
             </div>
             <nav class="mt-5 space-y-1 px-2">
@@ -102,7 +102,7 @@
       <div class="flex min-h-0 flex-1 flex-col border-r border-gray-200 bg-white">
         <div class="flex flex-1 flex-col overflow-y-auto pt-5 pb-4">
           <div class="flex flex-shrink-0 items-center px-4">
-            <span class="p-4 bg-blue-100 rounded-md">🌳</span>
+            <img class="p-2 bg-blue-100 w-14 rounded-full" src="/fhtools_logo.png" alt="F.H. Tools Logo"/>
             <h1 class="font-bold text-2xl ml-2">F.H. Tools</h1>
           </div>
           <nav class="mt-5 flex-1 space-y-1 bg-white px-2">
