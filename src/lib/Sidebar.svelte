@@ -78,7 +78,7 @@
 				Basic Citation Builder
 			  </a>
 			  
-			  <a href="/advanced" class={`${currPage == 'advanced' ? "bg-sky-100 text-sky-800" : ""} text-gray-600 group flex items-center px-2 py-2 text-base font-medium rounded-md`}>
+			  <button on:click={comingSoon} class={`${currPage == 'advanced' ? "bg-sky-100 text-sky-800" : ""} text-gray-600 group flex items-center px-2 py-2 text-base font-medium rounded-md`}>
 				  <!--
 					Heroicon name: outline/home
 			  
@@ -88,7 +88,7 @@
 					  <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
 					</svg>
 				  Advanced Citation Builder
-				</a>
+				</button>
   
 			  <a href="/soundex" class={`${currPage == 'soundex' ? "bg-sky-100 text-sky-800" : ""} text-gray-600 group flex items-center px-2 py-2 text-base font-medium rounded-md`}>
 				<!-- Heroicon name: outline/users -->
@@ -137,7 +137,7 @@
 			  Basic Citation Builder
 			</a>
 			
-			<a href="/advanced" class={`${currPage == 'advanced' ? "bg-gray-100 text-sky-800 hover:bg-sky-200 hover:text-sky-900" : "hover:bg-gray-50 hover:text-gray-900"} text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-sm font-medium w-full rounded-md`}>
+			<button on:click={comingSoon} class={`${currPage == 'advanced' ? "bg-gray-100 text-sky-800 hover:bg-sky-200 hover:text-sky-900" : "hover:bg-gray-50 hover:text-gray-900"} text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-sm font-medium w-full rounded-md`}>
 			  <!--
 				Heroicon name: outline/home
 			
@@ -147,7 +147,7 @@
 				<path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
 			  </svg>
 			  Advanced Citation Builder
-			</a>
+			</button>
   
 			<a href="/soundex" class={`${currPage == 'soundex' ? "bg-gray-100 text-sky-800 hover:bg-sky-200 hover:text-sky-900" : "hover:bg-gray-50 hover:text-gray-900"} text-gray-600 group flex items-center px-2 py-2 text-sm font-medium w-full rounded-md`}>
 			  <!-- Heroicon name: outline/users -->
