@@ -97,6 +97,13 @@
 				</svg>
 				Soundex Converter
 			  </a>
+			  <a href="/changelog" class={`${currPage == 'changelog' ? "bg-sky-100 text-sky-800" : ""} text-gray-600 group flex items-center px-2 py-2 text-base font-medium rounded-md`}>
+				  <!-- Heroicon name: outline/users -->
+				  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class={`${currPage == 'changelog' ? "text-sky-800 hover:text-sky-900" : "text-gray-500"} text-gray-500 mr-3 flex-shrink-0 h-6 w-6`}>
+					<path stroke-linecap="round" stroke-linejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" />
+				  </svg>
+				  Updates & FAQ
+				</a>
 			</nav>
 		  </div>
 		</div>
@@ -118,7 +125,7 @@
 		  </div>
 		  <nav class="mt-5 flex-1 space-y-1 bg-white px-2">
 			<!-- Current: "bg-gray-100 text-gray-900", Default: "text-gray-600 hover:bg-gray-50 hover:text-gray-900" -->
-			<a href="/" class={`${currPage == 'home' ? "bg-sky-100 text-sky-800 hover:bg-sky-200 hover:text-sky-900" : "hover:bg-gray-50 hover:text-gray-900"} text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-sm font-medium w-full rounded-md`}>
+			<a href="/" class={`${currPage == 'home' ? "bg-gray-100 text-sky-800 hover:bg-sky-200 hover:text-sky-900" : "hover:bg-gray-50 hover:text-gray-900"} text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-sm font-medium w-full rounded-md`}>
 			  <!--
 				Heroicon name: outline/home
   
@@ -130,7 +137,7 @@
 			  Basic Citation Builder
 			</a>
 			
-			<a href="/advanced" class={`${currPage == 'advanced' ? "bg-sky-100 text-sky-800 hover:bg-sky-200 hover:text-sky-900" : "hover:bg-gray-50 hover:text-gray-900"} text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-sm font-medium w-full rounded-md`}>
+			<a href="/advanced" class={`${currPage == 'advanced' ? "bg-gray-100 text-sky-800 hover:bg-sky-200 hover:text-sky-900" : "hover:bg-gray-50 hover:text-gray-900"} text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-sm font-medium w-full rounded-md`}>
 			  <!--
 				Heroicon name: outline/home
 			
@@ -142,12 +149,19 @@
 			  Advanced Citation Builder
 			</a>
   
-			<a href="/soundex" class={`${currPage == 'soundex' ? "bg-sky-100 text-sky-800 hover:bg-sky-200 hover:text-sky-900" : "hover:bg-gray-50 hover:text-gray-900"} text-gray-600 group flex items-center px-2 py-2 text-sm font-medium w-full rounded-md`}>
+			<a href="/soundex" class={`${currPage == 'soundex' ? "bg-gray-100 text-sky-800 hover:bg-sky-200 hover:text-sky-900" : "hover:bg-gray-50 hover:text-gray-900"} text-gray-600 group flex items-center px-2 py-2 text-sm font-medium w-full rounded-md`}>
 			  <!-- Heroicon name: outline/users -->
 			  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class={`${currPage == 'soundex' ? "text-sky-800 hover:text-sky-900" : "text-gray-500"} text-gray-500 mr-3 flex-shrink-0 h-6 w-6`}>
 				<path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
 			  </svg>
 			  Soundex Converter
+			</a>
+			<a href="/changelog" class={`${currPage == 'changelog' ? "bg-gray-100 text-sky-800 hover:bg-sky-200 hover:text-sky-900" : "hover:bg-gray-50 hover:text-gray-900"} text-gray-600 group flex items-center px-2 py-2 text-sm font-medium w-full rounded-md`}>
+			  <!-- Heroicon name: outline/users -->
+			  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class={`${currPage == 'changelog' ? "text-sky-800 hover:text-sky-900" : "text-gray-500"} text-gray-500 mr-3 flex-shrink-0 h-6 w-6`}>
+			  	<path stroke-linecap="round" stroke-linejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" />
+			  </svg>
+			  Updates & FAQ
 			</a>
 		  </nav>
 		</div>

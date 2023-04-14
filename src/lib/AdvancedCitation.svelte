@@ -1,11 +1,32 @@
 <script>
-	let citationType = "Family Tree Personal";
-	import Census from './basic_citations/Census.svelte';
-	import Church from './basic_citations/Church.svelte';
-	import CivilRecord from './basic_citations/CivilRecord.svelte';
-	import FamilyTreeHousehold from './basic_citations/FamilyTreeHousehold.svelte';
-	import FamilyTreePersonal from './basic_citations/FamilyTreePersonal.svelte'
-	import PersonalKnowledge from './basic_citations/PersonalKnowledge.svelte';
+	import { ComboBox } from "carbon-components-svelte";
+	
+	// Filter Combobox function
+	function shouldFilterItem(item, value) {
+		if (!value) return true;
+		return item.text.toLowerCase().includes(value.toLowerCase());
+	}
+	
+	// Citation Types
+	let citationTypeList = [
+		{ id: "0", text: "Archives & Artifacts" },
+		{ id: "1", text: "Business & Institutional" },
+		{ id: "2", text: "Cemetery" },
+		{ id: "3", text: "Census"}
+	]
+	
+	// Citation Templates
+	// 1. Archives & Artifacts
+	let archivesTemplates = [
+		{ id: "0", text: "Archived Artifact" },
+		{ id: "1", text: "Archived Documents: Digitized" },
+		{ id: "2", text: "Archived Manuscript Records" },
+		{ id: "3", text: "Archived Manuscript Records"}
+	]
+	
+	// Define variables
+	let citationType, citationTemplate;
+	
 </script>
 
 <div class="mx-auto max-w-7xl px-4 sm:px-6 md:px-8">
@@ -13,6 +34,23 @@
 </div>
 <div class="mx-auto max-w-7xl px-4 sm:px-6 md:px-8">
 	<div class="py-4">
-		<h1>Add stuff here</h1>
+		<ComboBox
+			light
+			titleText="Type"
+	    	placeholder="Select citation type"
+	  	  	items={citationTypeList}
+			bind:selectedId={citationType}
+	  		{shouldFilterItem}
+		/>
+		<div class="mt-4">
+			<ComboBox
+				light
+				titleText="Template"
+				placeholder="Select template"
+				items={citationType == "0" ? archivesTemplates : []}
+				bind:selectedId={citationTemplate}
+				{shouldFilterItem}
+			/>
+		</div>	
 	</div>
 </div>

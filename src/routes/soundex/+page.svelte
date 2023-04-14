@@ -1,4 +1,8 @@
-<main>
-	<h1 class="text-3xl text-cyan-500">This is a test</h1>	
-</main>
+<script>
+	import Sidebar from '../../lib/Sidebar.svelte';
+	import Soundex from '../../lib/Soundex.svelte'
+</script>
 
+<Sidebar currPage="soundex">
+	<Soundex slot="container"/>
+</Sidebar>
