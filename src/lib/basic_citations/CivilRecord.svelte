@@ -19,6 +19,27 @@
         copied = true;
         navigator.clipboard.writeText(citation);
     }
+	
+	function updateDefaultCollection() {
+		if(collectionName.includes("Arizona") && collectionName.includes("1909-1917")) {
+			switch(type) {
+				case 'birth':
+					collectionName = "Arizona, births and christenings, 1909-1917";
+					break;
+				case 'marriage':
+					collectionName = "Arizona, marriages and divorces, 1909-1917";
+					break;
+				case 'divorce':
+					collectionName = "Arizona, marriages and divorces, 1909-1917";
+					break;
+				case 'death':
+					collectionName = "Arizona, deaths and burials, 1909-1917"
+					break;
+				default:
+					collectionName = "Arizona, births and christenings, 1909-1917";
+			}
+		}
+	}
 </script>
 
 <div id="results" class="mt-4 p-4 border border-gray-300 rounded-md shadow-sm">
@@ -62,11 +83,11 @@
             <!-- Type of event -->
             <div class="w-[100%] md:w-[20%]">
                 <label for="type" class="block text-sm font-medium text-gray-700">Citation Type</label>
-                <select bind:value={type} id="type" name="type" class="mt-1 block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-blue-500 focus:outline-none focus:ring-blue-500 sm:text-sm">
+                <select bind:value={type} on:change={updateDefaultCollection} id="type" name="type" class="mt-1 block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-blue-500 focus:outline-none focus:ring-blue-500 sm:text-sm">
                 <option value="birth" selected>Birth</option>
                 <option value="marriage">Marriage</option>
                 <option value="divorce">Divorce</option>
-                <option value="confirmation">Death</option>
+                <option value="death">Death</option>
                 </select>
             </div>
             <!-- Event Date -->

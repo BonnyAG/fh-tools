@@ -15,6 +15,13 @@
 		<section class="mt-4">
 			<h2 class="text-xl font-semibold text-gray-900">Changelog</h2>
 			<hr/>
+			<!-- Changes - April 27, 2023 -->
+			<h3 class="mt-2 text-lg font-bold text-gray-900">April 27, 2023</h3>
+			<ul class="mt-1 pl-6 text-gray-600 list-disc space-y-1">
+				<li>Improvement: Default collection name changes for the civil record according to the t ype of record selected as long as it is still the default collection name.</li>
+				<li>Bug Fix: Type for Death Civil Record indicated 'confirmation' instead of 'death'</li>
+			</ul>
+			<!-- Changes - April 14, 2023 -->
 			<h3 class="mt-2 text-lg font-bold text-gray-900">April 14, 2023</h3>
 			<ul class="mt-1 pl-6 text-gray-600 list-disc space-y-1">
 				<li>Split the Basic Citation Builder and the Advanced Citation Builder into two separate pages and URLs</li>
