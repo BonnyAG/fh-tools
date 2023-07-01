@@ -8,6 +8,11 @@
 	}
 	
 	// Citation Types
+	/**
+		Enum for Citation Types
+		@readonly
+		@enum {string}
+	 */
 	let citationTypeList = [
 		{ id: "0", text: "Archives & Artifacts" },
 		{ id: "1", text: "Business & Institutional" },

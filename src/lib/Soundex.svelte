@@ -1,6 +1,13 @@
-<script>
-	// Dynamic variables
+<script lang="js">
+	/**
+	 * State defining if the result has been copied to the clipboard 
+	 * @type {boolean} Becomes TRUE when the result button is clicked on
+	*/
 	let copied = false;
+	/**
+	 * Surname value to be encoded into Soundex
+	 * @type {string} Default value: "Doe" 
+	 */
 	let surname = "Doe";
 	let lettersToCode = ""
 	let codedSurname = "";
@@ -258,12 +265,13 @@
 			<button class="rounded-md bg-white px-2.5 py-1.5 h-12 sm:h-[38px] sm:w-[50%] text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50" on:click={convertToSoundex(surname)}>Convert</button>
 		</div>
 		<div>
+			<p class="{!copied ? "text-slate-900" : "text-green-600"} mb-1 mt-4 text-sm font-bold">{!copied ? "Click to Copy" : "Copied Soundex Code!"}</p>
 			<button 
 			  on:click={copyToClipboard}
-			  class="mt-4 w-full inline-flex text-left rounded-md hover:bg-gray-200 transition bg-gray-100 px-3 py-2 text-sm font-medium text-gray-800">
+			  class="w-full inline-flex text-left rounded-md hover:bg-gray-200 transition bg-gray-100 px-3 py-2 text-sm font-medium text-gray-800">
 			  {codedSurname}
 			</button>
-			<p class="{!copied ? "hidden" : ""} text-sm text-green-600 mt-2 font-bold">Copied Soundex Code!</p>
+			
 		</div>
 	</div>
 </div>
