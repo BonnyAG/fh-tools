@@ -9,13 +9,10 @@
         Grid,
         Row,
         Column,
-        ClickableTile,
-        Tooltip,
         Toggle
     } from "carbon-components-svelte";
-
-    // Import Icons
-    import Copy from "carbon-icons-svelte/lib/Copy.svelte";
+    import DateInput from '$lib/utilities/DateInput.svelte';
+    import Result from '$lib/utilities/CitationResult.svelte';
 
     // Citation Variables
     /** @type {string} */
@@ -42,31 +39,16 @@
     let country = "France"
 
     // Utility Variables
-    /** Defines when the tooltip is diplayed 
-     * @type {boolean} */
-     let copied = false;
     /** @type {boolean} */
     let internationalMode = false;
-    /** List of all event types
-	 * @enum
-	 * @type {{id: string, text: string}[]}
-	*/
+    /**
+     * @enum
+     * @type {{id: string, text: string}}
+    */
 	const EVENT_TYPES = [
 		{ id: "interview", text: "Interview"},
 		{ id: "email", text: "Email"},
 	]
-    /** Regex pattern for dates
-     * @type {RegExp}
-    */
-    const datePattern = /\d{1,2}\/\d{1,2}\/\d{2,4}/
-
-    /** Copies the content of the citation to the clipboard */
-    function copyToClipboard() {
-        let address = internationalMode ? `${internationalCity != "" ? internationalCity : ""}${internationalCounty == "" ? internationalCounty + " County" : ", " + internationalCounty}, ${region}, ${country}` : `${localCity != "" ? localCity : ""}${localCounty == "" ? localCounty + " County" : ", " + localCounty}, ${state}`
-        let citation = `Personal ${type == "interview" ? "Interview of" : "Email from"} ${interviewee} ${type == "interview" ? "by" : "to"} ${interviewer} on ${moment(dateOfInterview).format('D MMMM YYYY')}, in possession of ${interviewer}, [address for private use], ${address}.`
-        copied = true;
-        navigator.clipboard.writeText(citation);
-    }
 </script>
 
 <Grid fullWidth noGutter>
@@ -87,13 +69,7 @@
             <TextInput labelText="Interviewer" class="min-w-[140px]" bind:value={interviewer} />
         </Column>
         <Column class="mt-2 sm:mt-0">
-            <TextInput 
-                labelText="Interview Date"
-                placeholder="mm/dd/yyyy"
-                bind:value={dateOfInterview} 
-                invalid={!datePattern.test(dateOfInterview)}
-                invalidText={!datePattern.test(dateOfInterview) ? "Please enter a date" : ""}
-            />
+            <DateInput bind:date={dateOfInterview} label="Interview Date" />
         </Column>
     </Row>
     <Row class="mb-3">
@@ -130,15 +106,9 @@
     <!-- CITATION RESULT -->
     <Row class="mt-4">
         <Column>
-            <ClickableTile on:click={copyToClipboard}>
-                <div class="flex justify-between">
-                    <span>{`Personal ${type == "interview" ? "Interview of" : "Email from"} ${interviewee} ${type == "interview" ? "by" : "to"} ${interviewer} on ${moment(dateOfInterview).format('D MMMM YYYY')}, in possession of ${interviewer}, [address for private use], ${internationalMode ? `${internationalCity != "" ? internationalCity : ""}${internationalCounty == "" ? internationalCounty + " County" : ", " + internationalCounty}, ${region}, ${country}` : `${localCity != "" ? localCity : ""}${localCounty == "" ? localCounty + " County" : ", " + localCounty}, ${state}`}.`}</span>
-                    <Tooltip bind:open={copied} icon={Copy} align="end">
-                        <p>Copied!</p>
-                    </Tooltip>
-                </div>
-                
-            </ClickableTile>
+            <Result 
+                citation={`Personal ${type == "interview" ? "Interview of" : "Email from"} ${interviewee} ${type == "interview" ? "by" : "to"} ${interviewer} on ${moment(dateOfInterview).format('D MMMM YYYY')}, in possession of ${interviewer}, [address for private use], ${internationalMode ? `${internationalCity != "" ? internationalCity : ""}${internationalCounty == "" ? internationalCounty + " County" : ", " + internationalCounty}, ${region}, ${country}` : `${localCity != "" ? localCity : ""}${localCounty == "" ? localCounty + " County" : ", " + localCounty}, ${state}`}.`}
+            />
         </Column>
     </Row>
 </Grid>

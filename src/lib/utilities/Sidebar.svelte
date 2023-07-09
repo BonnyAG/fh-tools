@@ -12,6 +12,9 @@
     import DocumentAdd from "carbon-icons-svelte/lib/DocumentAdd.svelte";
     import Help from "carbon-icons-svelte/lib/Help.svelte";
     import WorkflowAutomation from "carbon-icons-svelte/lib/WorkflowAutomation.svelte";
+
+    // Import Logo
+    import logo from '$lib/img/fhtools_logo.webp';
     
     /** Tracks state for side navigation
      * @type {boolean}
@@ -24,15 +27,18 @@
     export let selected; 
   </script>
   
-  <Header class="py-3" bind:isSideNavOpen>
+  <Header class="py-3" company="" href="/" uiShellAriaLabel="Header Menu" bind:isSideNavOpen>
     <svelte:fragment slot="skip-to-content">
       <SkipToContent />
     </svelte:fragment>
-    <img class="w-8 mr-3" src="/fhtools_logo.png" alt="F.H. Tools Logo"/>
-    <h2 class="text-white font-md">F.H Tools</h2>
+    <a href="/" class="px-3 py-2 flex content-center">
+      <img class="mr-3" width="42px" height="42px" src={logo} alt="F.H. Tools Logo"/>
+      <h2 class="text-white font-md">F.H Tools</h2>
+    </a>
+    
   </Header>
   
-  <SideNav bind:isOpen={isSideNavOpen}>
+  <SideNav ariaLabel="Sidebar Navigation Menu" bind:isOpen={isSideNavOpen}>
     <SideNavItems>
       {#if selected === "home"}
         <SideNavLink icon={DocumentAdd} text="Basic Citation Builder" href="/" isSelected />
@@ -52,7 +58,7 @@
     </SideNavItems>
   </SideNav>
   
-  <Content noGutter>
+  <Content>
     <slot name="container"/>
   </Content>
   

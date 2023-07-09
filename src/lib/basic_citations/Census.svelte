@@ -7,13 +7,10 @@
         TextInput,
         Grid,
         Row,
-        Column,
-        ClickableTile,
-        Tooltip 
+        Column
     } from "carbon-components-svelte";
-
-    // Import Icons
-    import Copy from "carbon-icons-svelte/lib/Copy.svelte";
+    import DateInput from '$lib/utilities/DateInput.svelte';
+    import Result from '$lib/utilities/CitationResult.svelte';
 
     // Citation Variables
     /** @type {string} */
@@ -40,22 +37,6 @@
     let siteURL = "www.ancestry.com";
     /** @type {string} */
     let dateAccessed = moment().format("MM/DD/YYYY");
-
-    // Utility Variables
-    /** Defines when the tooltip is diplayed 
-     * @type {boolean} */
-    let copied = false;
-    /** Regex pattern for dates
-     * @type {RegExp}
-    */
-   const datePattern = /\d{1,2}\/\d{1,2}\/\d{2,4}/
-
-    /** Copies the content of the citation to the clipboard */
-    function copyToClipboard() {
-        let citation = `${fatherFirstName} ${motherFirstName != "" ? "and " + motherFirstName : ""} ${lastName} household, ${city != "" ? city : ""}${city == "" ? county + " County" : ", " + county}, ${state}, US Federal ${censusYear} Census, ${enumerationDistrict != "" ? "enumeration district " + enumerationDistrict + ", " : ""}${folio != "" ? "folio " + folio : ""}${pageNumber != "" ? ", page " + pageNumber : ""}, ${siteURL}, accessed ${moment(dateAccessed).format('D MMMM YYYY')}.`
-        copied = true;
-        navigator.clipboard.writeText(citation);
-    }
 </script>
 
 <Grid fullWidth noGutter>
@@ -101,27 +82,15 @@
             <TextInput labelText="Site Accessed" bind:value={siteURL} />
         </Column>
         <Column>
-            <TextInput 
-                labelText="Date Accessed"
-                placeholder="mm/dd/yyyy"
-                bind:value={dateAccessed} 
-                invalid={!datePattern.test(dateAccessed)}
-                invalidText={!datePattern.test(dateAccessed) ? "Please enter a date" : ""}
-                />
+            <DateInput label="Date Accessed" bind:date={dateAccessed} />
         </Column>
     </Row>
     <!-- CITATION RESULT -->
     <Row>
         <Column>
-            <ClickableTile on:click={copyToClipboard}>
-                <div class="flex justify-between">
-                    <span>{`${fatherFirstName} ${motherFirstName != "" ? "and " + motherFirstName : ""} ${lastName} household, ${city != "" ? city : ""}${city == "" ? county + " County" : ", " + county}, ${state}, US Federal ${censusYear} Census, ${enumerationDistrict != "" ? "enumeration district " + enumerationDistrict + ", " : ""}${folio != "" ? "folio " + folio : ""}${pageNumber != "" ? ", page " + pageNumber : ""}, ${siteURL}, accessed ${moment(dateAccessed).format('D MMMM YYYY')}.`}</span>
-                    <Tooltip bind:open={copied} icon={Copy} align="end">
-                        <p>Copied!</p>
-                    </Tooltip>
-                </div>
-                
-            </ClickableTile>
+            <Result
+                citation={`${fatherFirstName} ${motherFirstName != "" ? "and " + motherFirstName : ""} ${lastName} household, ${city != "" ? city : ""}${city == "" ? county + " County" : ", " + county}, ${state}, US Federal ${censusYear} Census, ${enumerationDistrict != "" ? "enumeration district " + enumerationDistrict + ", " : ""}${folio != "" ? "folio " + folio : ""}${pageNumber != "" ? ", page " + pageNumber : ""}, ${siteURL}, accessed ${moment(dateAccessed).format('D MMMM YYYY')}.`}
+            />
         </Column>
     </Row>
 </Grid>

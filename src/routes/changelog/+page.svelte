@@ -1,6 +1,7 @@
 <script>
-	import Sidebar from '$lib/Sidebar.svelte';
-	import { Tag, Accordion, AccordionItem, UnorderedList, ListItem } from "carbon-components-svelte";
+	import Sidebar from '$lib/utilities/Sidebar.svelte';
+	import ChangelogLine from '$lib/utilities/ChangelogLine.svelte';
+	import { Accordion, AccordionItem } from "carbon-components-svelte";
 
 </script>
 
@@ -34,50 +35,35 @@
 				<h2 class="text-xl bg-[#f4f4f4] p-2 font-semibold">Changelog</h2>
 				<hr/>
 				<div>
-					<h3 class="mt-3 text-lg font-bold">July 9, 2023</h3>
-					<hr />
-					<div class="mt-1">
-						<div class="flex items-center">
-							<Tag type="teal">Improvement</Tag>
-							<p class="ml-1 text-sm">Added an international mode for the Personal Knowledge Citation.</p>
-						</div>
-						<div class="flex items-center">
-							<Tag type="teal">Improvement</Tag>
-							<p class="ml-1 text-sm">Refreshed design of the changelog.</p>
-						</div>
-						<div class="flex items-center">
-							<Tag type="teal">Improvement</Tag>
-							<p class="ml-1 text-sm">Refreshed design of the site (Used the Carbon Design Language).</p>
-						</div>
-					</div>
-					<h3 class="mt-3 text-lg font-bold">April 27, 2023</h3>
-					<hr />
-					<div class="mt-1">
-						<div class="flex items-center">
-							<Tag type="teal">Improvement</Tag>
-							<p class="ml-1 text-sm">Default collection name changes for the civil record according to the type of record selected as long as it is still the default collection name.</p>
-						</div>
-						<div class="flex items-center">
-							<Tag type="red">Bug Fix</Tag>
-							<p class="ml-1 text-sm">Type for Death Civil Record indicated 'confirmation' instead of 'death'</p>
-						</div>
-					</div>
-					<h3 class="mt-3 text-lg font-bold">April 14, 2023</h3>
-					<hr />
-					<div class="mt-1">
-						<div class="flex items-center">
-							<Tag type="purple">Change</Tag>
-							<p class="ml-1 text-sm">Split the Basic Citation Builder and the Advanced Citation Builder into two separate pages and URLs</p>
-						</div>
-						<div class="flex items-center">
-							<Tag type="green">New</Tag>
-							<p class="ml-1 text-sm">Added a Soundex Converter</p>
-						</div>
-						<div class="flex items-center">
-							<Tag type="green">New</Tag>
-							<p class="ml-1 text-sm">Added an Updates and FAQ page</p>
-						</div>
-					</div>
+					<ChangelogLine
+						date="July 10, 2023"
+						lines={[
+							{type: "bug", text: "Corrected Layout to be responsive"}
+						]}
+					/>
+					<ChangelogLine
+						date="July 9, 2023"
+						lines={[
+							{type: "improvement", text: "Added an international mode for the Personal Knowledge Citation."},
+							{type: "improvement", text: "Refreshed design of the changelog."},
+							{type: "improvement", text: "Refreshed design of the site (Used the Carbon Design Language)."}
+						]}
+					/>
+					<ChangelogLine
+						date="April 27, 2023"
+						lines={[
+							{type: "improvement", text: "Default collection name changes for the civil record according to the type of record selected as long as it is still the default collection name."},
+							{type: "bug", text: "Type for Death Civil Record indicated 'confirmation' instead of 'death'"},
+						]}
+					/>
+					<ChangelogLine
+						date="April 14, 2023"
+						lines={[
+							{type: "change", text: "Split the Basic Citation Builder and the Advanced Citation Builder into two separate pages and URLs."},
+							{type: "new", text: "Added a Soundex Converter"},
+							{type: "new", text: "Added an Updates and FAQ page"}
+						]}
+					/>
 				</div>
 			</section>
 		</div>

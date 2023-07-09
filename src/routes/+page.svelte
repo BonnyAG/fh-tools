@@ -7,10 +7,10 @@
 	import { Dropdown } from "carbon-components-svelte";
 
 	// Import Layout
-	import Sidebar from '$lib/Sidebar.svelte';
+	import Sidebar from '$lib/utilities/Sidebar.svelte';
 
 	// Import Citations
-	import CitationContainer from '$lib/CitationContainer.svelte';
+	import CitationContainer from '$lib/utilities/CitationContainer.svelte';
     import Census from '$lib/basic_citations/Census.svelte';
     import Church from '$lib/basic_citations/Church.svelte';
     import CivilRecord from '$lib/basic_citations/CivilRecord.svelte';
