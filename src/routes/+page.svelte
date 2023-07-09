@@ -38,14 +38,14 @@
 </script>
 
 <Sidebar selected="home">
-	<main slot="container">
+	<div slot="container">
 		<!-- HEADER -->
-		<section class="mx-auto max-w-7xl">
+		<section class="mx-auto md:max-w-7xl">
 			<h1 class="text-2xl font-semibold text-gray-900">Basic Citation Builder</h1>
 		</section>
 		<!-- MAIN CONTENT -->
-		<section class="mx-auto max-w-7xl">
-			<div class="py-2">
+		<section class="mx-auto md:max-w-7xl">
+			<div class="py-1">
 				<!-- SELECT CITATION TYPE -->
 				<Dropdown
 					titleText="Citation Type"
@@ -73,5 +73,5 @@
 				</CitationContainer>
 			</div>
 		</section>
-	</main>
+	</div>
 </Sidebar>

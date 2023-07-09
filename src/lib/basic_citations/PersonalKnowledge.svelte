@@ -71,8 +71,8 @@
 
 <Grid fullWidth noGutter>
     <!-- CITATION CONTENT -->
-    <Row class="mb-3">
-        <Column>
+    <Row class="mb-5">
+        <Column class="min-w-full sm:min-w-0">
             <Dropdown
                 titleText="Event Type"
                 placeholder="Select Event Type"
@@ -80,13 +80,13 @@
                 bind:selectedId={type}
 			/>
         </Column>
-        <Column>
-            <TextInput labelText="Interviewee" bind:value={interviewee} />    
+        <Column class="mt-2 sm:mt-0">
+            <TextInput labelText="Interviewee" class="min-w-[140px]" bind:value={interviewee} />    
         </Column>
-        <Column>
-            <TextInput labelText="Interviewer" bind:value={interviewer} />
+        <Column class="mt-2 sm:mt-0">
+            <TextInput labelText="Interviewer" class="min-w-[140px]" bind:value={interviewer} />
         </Column>
-        <Column>
+        <Column class="mt-2 sm:mt-0">
             <TextInput 
                 labelText="Interview Date"
                 placeholder="mm/dd/yyyy"
@@ -96,7 +96,7 @@
             />
         </Column>
     </Row>
-    <Row class="mb-1">
+    <Row class="mb-3">
         <Column>
             <Toggle size="sm" hideLabel labelA="International Address" labelB="International Address" bind:toggled={internationalMode}/>
         </Column>
@@ -104,26 +104,26 @@
     <Row class="">
         {#if internationalMode}
             <Column>
-                <TextInput labelText="City" bind:value={internationalCity} />
+                <TextInput labelText="City" class="min-w-[140px]" bind:value={internationalCity} />
             </Column>
             <Column>
-                <TextInput labelText="County" bind:value={internationalCounty} />
+                <TextInput labelText="County" class="min-w-[140px]" bind:value={internationalCounty} />
             </Column>
-            <Column>
-                <TextInput labelText="Region" bind:value={region} />
+            <Column class="mt-2 sm:mt-0">
+                <TextInput labelText="Region" class="min-w-[140px]" bind:value={region} />
             </Column>
-            <Column>
-                <TextInput labelText="Country" bind:value={country} />
+            <Column class="mt-2 sm:mt-0">
+                <TextInput labelText="Country" class="min-w-[140px]" bind:value={country} />
             </Column>
         {:else}
             <Column>
-                <TextInput labelText="City" bind:value={localCity} />
+                <TextInput labelText="City" class="min-w-[140px]" bind:value={localCity} />
             </Column>
             <Column>
-                <TextInput labelText="County" bind:value={localCounty} />
+                <TextInput labelText="County" class="min-w-[140px]" bind:value={localCounty} />
             </Column>
-            <Column>
-                <TextInput labelText="State" bind:value={state} />
+            <Column class="mt-2 sm:mt-0">
+                <TextInput labelText="State" class="min-w-[140px]" bind:value={state} />
             </Column>
         {/if}
     </Row>

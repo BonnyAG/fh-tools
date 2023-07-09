@@ -46,18 +46,19 @@
     <!-- CITATION CONTENT -->
     <Row>
         <Column>
-            <TextInput labelText="Father's Name" placeholder="Enter user name..." bind:value={fatherName} />    
+            <TextInput labelText="Father's Name" class="min-w-[140px]" bind:value={fatherName} />    
         </Column>
         <Column>
-            <TextInput labelText="Mother's Name" placeholder="Enter user name..." bind:value={motherName} />    
+            <TextInput labelText="Mother's Name" class="min-w-[140px]" bind:value={motherName} />    
         </Column>
-        <Column>
-            <TextInput labelText="FamilySearch ID" placeholder="Enter user name..." bind:value={familySearchId} />
+        <Column class="mt-2 sm:mt-0">
+            <TextInput labelText="FamilySearch ID" class="min-w-[140px]" bind:value={familySearchId} />
         </Column>
-        <Column>
+        <Column class="mt-2 sm:mt-0">
             <TextInput 
                 labelText="Date Accessed"
                 placeholder="mm/dd/yyyy"
+                class="min-w-[140px]"
                 bind:value={dateAccessed} 
                 invalid={!datePattern.test(dateAccessed)}
                 invalidText={!datePattern.test(dateAccessed) ? "Please enter a date" : ""}

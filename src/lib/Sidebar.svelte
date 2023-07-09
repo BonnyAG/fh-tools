@@ -4,10 +4,8 @@
       SideNav,
       SideNavItems,
       SideNavLink,
-      SideNavDivider,
       SkipToContent,
       Content,
-      Column,
     } from "carbon-components-svelte";
 
     // Import icons
@@ -46,7 +44,6 @@
       {:else}
         <SideNavLink icon={WorkflowAutomation} text="Soundex Converter" href="/soundex" />
       {/if}
-      <SideNavDivider />
       {#if selected === "changelog"}
         <SideNavLink icon={Help} text="Updates & FAQ" href="/changelog" isSelected />
       {:else}
@@ -55,9 +52,7 @@
     </SideNavItems>
   </SideNav>
   
-  <Content>
-    <Column>
-      <slot name="container"/>
-    </Column>
+  <Content noGutter>
+    <slot name="container"/>
   </Content>
   

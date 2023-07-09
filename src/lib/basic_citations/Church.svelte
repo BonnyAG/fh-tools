@@ -69,16 +69,16 @@
     <!-- CITATION CONTENT -->
     <Row class="mb-2">
         <Column>
-            <TextInput labelText="Ancestor's Name" bind:value={ancestorName} />
+            <TextInput labelText="Ancestor's Name" class="min-w-[140px]" bind:value={ancestorName} />
         </Column>
         <Column>
-            <TextInput labelText="City" bind:value={city} />
+            <TextInput labelText="City" class="min-w-[140px]" bind:value={city} />
         </Column>
-        <Column>
-            <TextInput labelText="County" bind:value={county} />
+        <Column class="mt-2 sm:mt-0">
+            <TextInput labelText="County" class="min-w-[140px]" bind:value={county} />
         </Column>
-        <Column>
-            <TextInput labelText="State" bind:value={state} />
+        <Column class="mt-2 sm:mt-0">
+            <TextInput labelText="State" class="min-w-[140px]" bind:value={state} />
         </Column>
     </Row>
     <Row class="mb-2">
@@ -86,6 +86,7 @@
             <Dropdown
 					titleText="Event Type"
 					placeholder="Select Event Type"
+                    class="min-w-[140px]"
 					items={EVENT_TYPES}
 					bind:selectedId={eventType}
 				/>
@@ -94,13 +95,14 @@
             <TextInput 
                 labelText="Event Date"
                 placeholder="mm/dd/yyyy"
+                class="min-w-[140px]"
                 bind:value={eventDate} 
                 invalid={!datePattern.test(eventDate)}
                 invalidText={!datePattern.test(eventDate) ? "Please enter a date" : ""}
                 />
         </Column>
-        <Column>
-            <TextInput labelText="Collection Name" bind:value={collectionName} />
+        <Column class="mt-2 sm:mt-0">
+            <TextInput labelText="Collection Name" class="min-w-[140px]" bind:value={collectionName} />
         </Column>
     </Row>
     <Row class="mb-4">

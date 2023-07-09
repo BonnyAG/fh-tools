@@ -62,38 +62,38 @@
     <!-- CITATION CONTENT -->
     <Row class="mb-2">
         <Column>
-            <TextInput labelText="Father's First Name" bind:value={fatherFirstName} />
+            <TextInput labelText="Father's First Name" class="min-w-[140px]" bind:value={fatherFirstName} />
         </Column>
         <Column>
-            <TextInput labelText="Mother's First Name" bind:value={motherFirstName} />
+            <TextInput labelText="Mother's First Name" class="min-w-[140px]" bind:value={motherFirstName} />
         </Column>
-        <Column>
-            <TextInput labelText="Last Name" bind:value={lastName} />
-        </Column>
-    </Row>
-    <Row class="mb-2">
-        <Column>
-            <TextInput labelText="City" bind:value={city} />
-        </Column>
-        <Column>
-            <TextInput labelText="County" bind:value={county} />
-        </Column>
-        <Column>
-            <TextInput labelText="State" bind:value={state} />
+        <Column class="mt-2 sm:mt-0">
+            <TextInput labelText="Last Name" class="min-w-[140px]" bind:value={lastName} />
         </Column>
     </Row>
     <Row class="mb-2">
         <Column>
-            <TextInput labelText="Census Year" bind:value={censusYear} />
+            <TextInput labelText="City" class="min-w-[90px]" bind:value={city} />
         </Column>
         <Column>
-            <TextInput labelText="Enumeration District" bind:value={enumerationDistrict} />
+            <TextInput labelText="County" class="min-w-[90px]" bind:value={county} />
+        </Column>
+        <Column class="mt-2 sm:mt-0">
+            <TextInput labelText="State" class="min-w-[90px]" bind:value={state} />
+        </Column>
+    </Row>
+    <Row class="mb-2">
+        <Column>
+            <TextInput labelText="Census Year" class="min-w-[90px]"bind:value={censusYear} />
         </Column>
         <Column>
-            <TextInput labelText="Folio #" bind:value={folio} />
+            <TextInput labelText="Enumeration District" class="min-w-[90px]" bind:value={enumerationDistrict} />
         </Column>
-        <Column>
-            <TextInput labelText="Page #" bind:value={pageNumber} />
+        <Column class="mt-2 sm:mt-0">
+            <TextInput labelText="Folio #" class="min-w-[90px]" bind:value={folio} />
+        </Column>
+        <Column class="mt-2 sm:mt-0">
+            <TextInput labelText="Page #" class="min-w-[90px]" bind:value={pageNumber} />
         </Column>
     </Row>
     <Row class="mb-4">

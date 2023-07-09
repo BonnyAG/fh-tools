@@ -44,15 +44,16 @@
     <!-- CITATION CONTENT -->
     <Row>
         <Column>
-            <TextInput labelText="Ancestor's Name" placeholder="Enter user name..." bind:value={ancestorName} />    
+            <TextInput labelText="Ancestor's Name" class="min-w-[140px]" bind:value={ancestorName} />    
         </Column>
         <Column>
-            <TextInput labelText="FamilySearch ID" placeholder="Enter user name..." bind:value={familySearchId} />
+            <TextInput labelText="FamilySearch ID" class="min-w-[140px]" bind:value={familySearchId} />
         </Column>
-        <Column>
+        <Column class="mt-2 sm:mt-0">
             <TextInput 
                 labelText="Date Accessed"
                 placeholder="mm/dd/yyyy"
+                class="min-w-[140px]"
                 bind:value={dateAccessed} 
                 invalid={!datePattern.test(dateAccessed)}
                 invalidText={!datePattern.test(dateAccessed) ? "Please enter a date" : ""}
