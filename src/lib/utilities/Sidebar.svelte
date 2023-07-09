@@ -27,7 +27,7 @@
     export let selected; 
   </script>
   
-  <Header class="py-3" company="" href="/" uiShellAriaLabel="Header Menu" bind:isSideNavOpen>
+  <Header expandedByDefault class="py-3" company="" href="/" uiShellAriaLabel="Header Menu" bind:isSideNavOpen>
     <svelte:fragment slot="skip-to-content">
       <SkipToContent />
     </svelte:fragment>
@@ -38,7 +38,7 @@
     
   </Header>
   
-  <SideNav ariaLabel="Sidebar Navigation Menu" bind:isOpen={isSideNavOpen}>
+  <SideNav ariaLabel="Sidebar Navigation Menu" rail bind:isOpen={isSideNavOpen}>
     <SideNavItems>
       {#if selected === "home"}
         <SideNavLink icon={DocumentAdd} text="Basic Citation Builder" href="/" isSelected />

@@ -5,3 +5,9 @@
 .bx--header__name {
     display: none !important;
 }
+
+@font-face {
+    font-family: 'IBM-Plex-Sans';
+    src: local('IBM-Plex-Sans');
+    font-display: swap;
+}
