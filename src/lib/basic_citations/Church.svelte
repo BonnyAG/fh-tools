@@ -1,130 +1,134 @@
 <script>
-    import "carbon-components-svelte/css/all.css";
+    // Import libraries
     import moment from 'moment';
-    import { DatePicker, DatePickerInput } from "carbon-components-svelte";
 
-    let name = "John Doe";
-    let type = "baptism";
-    let eventDate = new Date();
+    // Import Components
+    import { 
+        Dropdown,
+        TextInput,
+        Grid,
+        Row,
+        Column,
+        ClickableTile,
+        Tooltip 
+    } from "carbon-components-svelte";
+
+    // Import Icons
+    import Copy from "carbon-icons-svelte/lib/Copy.svelte";
+
+    // Citation Variables
+    /** @type {string} */
+    let ancestorName = "John Doe";
+    /** @type {string} */
+    let eventType = "baptism";
+    /** @type {string} */
+    let eventDate = moment().format("MM/DD/YYYY");
+    /** @type {string} */
     let city = "Eden";
+    /** @type {string} */
     let county = "Graham";
+    /** @type {string} */
     let state = "Arizona";
+    /** @type {string} */
     let collectionName = "Arizona, births and christenings, 1909-1917";
-    let site = "www.ancestry.com"
-    let date = new Date();
-    let copied = false;
+    /** @type {string} */
+    let siteURL = "www.ancestry.com"
+    /** @type {string} */
+    let dateAccessed = moment().format("MM/DD/YYYY");
 
+    // Utility Variables
+    /** Defines when the tooltip is diplayed 
+     * @type {boolean} */
+    let copied = false;
+    /** List of all event types
+	 * @enum
+	 * @type {{id: string, text: string}[]}
+	*/
+	const EVENT_TYPES = [
+		{ id: "baptism", text: "Baptism"},
+		{ id: "christening", text: "Christening"},
+		{ id: "confirmation", text: "Confirmation"},
+		{ id: "membership", text: "Membership"},
+		{ id: "marriage", text: "Marriage"},
+		{ id: "death and burial", text: "Death & Burial"},
+	]
+    /** Regex pattern for dates
+     * @type {RegExp}
+    */
+   const datePattern = /\d{1,2}\/\d{1,2}\/\d{2,4}/
+
+    /** Copies the content of the citation to the clipboard */
     function copyToClipboard() {
-        let citation = `${name} ${type}, ${moment(eventDate).format('D MMMM YYYY')}, ${city != "" ? city : ""}${city == "" ? county + " County" : ", " + county}, ${state}, "${collectionName}", ${site}, accessed ${moment(date).format('D MMMM YYYY')}.`
+        let citation = `${ancestorName} ${eventType}, ${moment(eventDate).format('D MMMM YYYY')}, ${city != "" ? city : ""}${city == "" ? county + " County" : ", " + county}, ${state}, "${collectionName}", ${siteURL}, accessed ${moment(dateAccessed).format('D MMMM YYYY')}.`
         copied = true;
         navigator.clipboard.writeText(citation);
     }
 </script>
 
-<div id="results" class="mt-4 p-4 border border-gray-300 rounded-md shadow-sm">
-    <div>
-        <!-- Name, Date, Place -->
-        <div class="flex flex-col md:flex-row gap-3 mb-2">
-            <!-- Name -->
-            <div class="w-[100%] md:w-[35%]">
-                <label for="name" class="inline-block text-sm font-medium text-gray-700">Ancestor's Name</label>
-                <div class="mt-1">
-                <input type="text" bind:value={name} name="name" id="name" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" placeholder="John Doe" aria-describedby="name-description">
+<Grid fullWidth noGutter>
+    <!-- CITATION CONTENT -->
+    <Row class="mb-2">
+        <Column>
+            <TextInput labelText="Ancestor's Name" bind:value={ancestorName} />
+        </Column>
+        <Column>
+            <TextInput labelText="City" bind:value={city} />
+        </Column>
+        <Column>
+            <TextInput labelText="County" bind:value={county} />
+        </Column>
+        <Column>
+            <TextInput labelText="State" bind:value={state} />
+        </Column>
+    </Row>
+    <Row class="mb-2">
+        <Column>
+            <Dropdown
+					titleText="Event Type"
+					placeholder="Select Event Type"
+					items={EVENT_TYPES}
+					bind:selectedId={eventType}
+				/>
+        </Column>
+        <Column>
+            <TextInput 
+                labelText="Event Date"
+                placeholder="mm/dd/yyyy"
+                bind:value={eventDate} 
+                invalid={!datePattern.test(eventDate)}
+                invalidText={!datePattern.test(eventDate) ? "Please enter a date" : ""}
+                />
+        </Column>
+        <Column>
+            <TextInput labelText="Collection Name" bind:value={collectionName} />
+        </Column>
+    </Row>
+    <Row class="mb-4">
+        <Column>
+            <TextInput labelText="Site Accessed" bind:value={siteURL} />
+        </Column>
+        <Column>
+            <TextInput 
+                labelText="Date Accessed"
+                placeholder="mm/dd/yyyy"
+                bind:value={dateAccessed} 
+                invalid={!datePattern.test(dateAccessed)}
+                invalidText={!datePattern.test(dateAccessed) ? "Please enter a date" : ""}
+                />
+        </Column>
+    </Row>
+    <!-- CITATION RESULT -->
+    <Row>
+        <Column>
+            <ClickableTile on:click={copyToClipboard}>
+                <div class="flex justify-between">
+                    <span>{`${ancestorName} ${eventType}, ${moment(eventDate).format('D MMMM YYYY')}, ${city != "" ? city : ""}${city == "" ? county + " County" : ", " + county}, ${state}, "${collectionName}", ${siteURL}, accessed ${moment(dateAccessed).format('D MMMM YYYY')}.`}</span>
+                    <Tooltip bind:open={copied} icon={Copy} align="end">
+                        <p>Copied!</p>
+                    </Tooltip>
                 </div>
-            </div>
-            <div class="flex gap-2 md:w-[65%]">
-                <!-- City -->
-                <div class="w-[35%]">
-                    <label for="name" class="inline-block text-sm font-medium text-gray-700">City</label>
-                    <div class="mt-1">
-                    <input type="text" bind:value={city} name="name" id="name" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" aria-describedby="name-description">
-                    </div>
-                </div>
-                <!-- County -->
-                <div class="w-[35%]">
-                    <label for="name" class="inline-block text-sm font-medium text-gray-700">County</label>
-                    <div class="mt-1">
-                    <input type="text" bind:value={county} name="name" id="name" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" aria-describedby="name-description">
-                    </div>
-                </div>
-                <!-- State -->
-                <div class="w-[35%]">
-                    <label for="name" class="inline-block text-sm font-medium text-gray-700">State</label>
-                    <div class="mt-1">
-                    <input type="text" bind:value={state} name="name" id="name" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" aria-describedby="name-description">
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Event Section -->
-        <div class="flex flex-col md:flex-row gap-3 mb-2">
-            <!-- Type of event -->
-            <div class="w-[100%] md:w-[20%]">
-                <label for="type" class="block text-sm font-medium text-gray-700">Citation Type</label>
-                <select bind:value={type} id="type" name="type" class="mt-1 block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-blue-500 focus:outline-none focus:ring-blue-500 sm:text-sm">
-                <option value="baptism" selected>Baptism</option>
-                <option value="christening">Christening</option>
-                <option value="confirmation">Confirmation</option>
-                <option value="membership">Membership</option>
-                <option value="marriage">Marriage</option>
-                <option value="death and burial">Death & Burial</option>
-                </select>
-            </div>
-            <!-- Event Date -->
-            <div class="">
-                <p class="block text-sm font-medium text-gray-700">Event Date</p>
-                <DatePicker datePickerType="single" bind:value={eventDate} on:change light>
-                    <DatePickerInput  
-                        hideLabel
-                        class=" text-sm font-medium text-gray-700 border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
-                        labelText="Meeting date"
-                        placeholder="mm/dd/yyyy"
-                    />
-                </DatePicker>
-            </div>
-            <!-- Collection Name -->
-            <div class="w-[100%] md:w-[60%]">
-                <label for="name" class="inline-block text-sm font-medium text-gray-700">Collection Name</label>
-                <div class="mt-1">
-                <input type="text" bind:value={collectionName} name="name" id="name" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" placeholder="John Doe" aria-describedby="name-description">
-                </div>
-            </div>
-        </div>
-        
-        <!-- Site Section -->
-        <div class="flex flex-col md:flex-row gap-3 mb-2">
-            <!-- Site -->
-            <div class="w-[100%] md:w-[35%]">
-                <label for="fID" class="block text-sm font-medium text-gray-700">Site Accessed</label>
-                <div class="mt-1">
-                <input type="text" bind:value={site} name="fID" id="fID" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" placeholder="ABCD-123" aria-describedby="fID-description">
-                </div>
-            </div>
-            <!-- Date Accessed -->
-            <div class="">
-                <p class="block text-sm font-medium text-gray-700">Date Accessed</p>
-                <DatePicker datePickerType="single" bind:value={date} on:change light>
-                    <DatePickerInput  
-                        hideLabel
-                        class="w-full text-sm font-medium text-gray-700 border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
-                        labelText="Meeting date"
-                        placeholder="mm/dd/yyyy"
-                    />
-                </DatePicker>
-            </div>
-        </div>
-    </div>
-    <button 
-      on:click={copyToClipboard}
-      class="mt-4 w-full inline-flex text-left rounded-md hover:bg-gray-200 transition bg-gray-100 px-3 py-2 text-sm font-medium text-gray-800">
-      {`${name} ${type}, ${moment(eventDate).format('D MMMM YYYY')}, ${city != "" ? city : ""}${city == "" ? county + " County" : ", " + county}, ${state}, "${collectionName}", ${site}, accessed ${moment(date).format('D MMMM YYYY')}.`}
-    </button>
-    <p class="{!copied ? "hidden" : ""} text-sm text-green-600 mt-2 font-bold">Copied Citation!</p>
-</div>
-
-<style>
-    #results {
-        border: 1px solid #D1D5DB;
-    }
-</style>
+                
+            </ClickableTile>
+        </Column>
+    </Row>
+</Grid>

@@ -1,153 +1,127 @@
 <script>
-    import "carbon-components-svelte/css/all.css";
+    // Import libraries
     import moment from 'moment';
-    import { DatePicker, DatePickerInput } from "carbon-components-svelte";
 
+    // Import Components
+    import { 
+        TextInput,
+        Grid,
+        Row,
+        Column,
+        ClickableTile,
+        Tooltip 
+    } from "carbon-components-svelte";
+
+    // Import Icons
+    import Copy from "carbon-icons-svelte/lib/Copy.svelte";
+
+    // Citation Variables
+    /** @type {string} */
     let fatherFirstName = "John";
-    let motherFirstName = "Jane"
+    /** @type {string} */
+    let motherFirstName = "Jane";
+    /** @type {string} */
     let lastName = "Doe";
+    /** @type {string} */
     let city = "Eden";
+    /** @type {string} */
     let county = "Graham";
+    /** @type {string} */
     let state = "Arizona";
+    /** @type {number} */
     let censusYear = 1880;
-    let ed = "2";
+    /** @type {string} */
+    let enumerationDistrict = "2";
+    /** @type {string} */
     let folio = "4";
-    let page = "1";
-    let site = "www.ancestry.com";
-    let date = new Date();
-    let copied = false;
+    /** @type {string} */
+    let pageNumber = "1";
+    /** @type {string} */
+    let siteURL = "www.ancestry.com";
+    /** @type {string} */
+    let dateAccessed = moment().format("MM/DD/YYYY");
 
+    // Utility Variables
+    /** Defines when the tooltip is diplayed 
+     * @type {boolean} */
+    let copied = false;
+    /** Regex pattern for dates
+     * @type {RegExp}
+    */
+   const datePattern = /\d{1,2}\/\d{1,2}\/\d{2,4}/
+
+    /** Copies the content of the citation to the clipboard */
     function copyToClipboard() {
-        let citation = `${fatherFirstName} ${motherFirstName != "" ? "and " + motherFirstName : ""} ${lastName} household, ${city != "" ? city : ""}${city == "" ? county + " County" : ", " + county}, ${state}, US Federal ${censusYear} Census, ${ed != "" ? "enumeration district " + ed + ", " : ""}${folio != "" ? "folio " + folio : ""}${page != "" ? ", page " + page : ""}, ${site}, accessed ${moment(date).format('D MMMM YYYY')}.`
+        let citation = `${fatherFirstName} ${motherFirstName != "" ? "and " + motherFirstName : ""} ${lastName} household, ${city != "" ? city : ""}${city == "" ? county + " County" : ", " + county}, ${state}, US Federal ${censusYear} Census, ${enumerationDistrict != "" ? "enumeration district " + enumerationDistrict + ", " : ""}${folio != "" ? "folio " + folio : ""}${pageNumber != "" ? ", page " + pageNumber : ""}, ${siteURL}, accessed ${moment(dateAccessed).format('D MMMM YYYY')}.`
         copied = true;
         navigator.clipboard.writeText(citation);
     }
 </script>
 
-<div id="results" class="mt-4 p-4 border border-gray-300 rounded-md shadow-sm">
-    <div>
-        <!-- Name Section -->
-        <div class="flex flex-col md:flex-row gap-3 md:gap-0 mb-2">
-            <div class="flex mb-3 gap-2 md:mb-0 md:w-[65%] md:mr-2">
-                <!-- Father First Name -->
-                <div class="w-[50%]">
-                    <label for="name" class="inline-block text-sm font-medium text-gray-700">Father's First Name</label>
-                    <div class="mt-1">
-                    <input type="text" bind:value={fatherFirstName} name="name" id="name" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" aria-describedby="name-description">
-                    </div>
+<Grid fullWidth noGutter>
+    <!-- CITATION CONTENT -->
+    <Row class="mb-2">
+        <Column>
+            <TextInput labelText="Father's First Name" bind:value={fatherFirstName} />
+        </Column>
+        <Column>
+            <TextInput labelText="Mother's First Name" bind:value={motherFirstName} />
+        </Column>
+        <Column>
+            <TextInput labelText="Last Name" bind:value={lastName} />
+        </Column>
+    </Row>
+    <Row class="mb-2">
+        <Column>
+            <TextInput labelText="City" bind:value={city} />
+        </Column>
+        <Column>
+            <TextInput labelText="County" bind:value={county} />
+        </Column>
+        <Column>
+            <TextInput labelText="State" bind:value={state} />
+        </Column>
+    </Row>
+    <Row class="mb-2">
+        <Column>
+            <TextInput labelText="Census Year" bind:value={censusYear} />
+        </Column>
+        <Column>
+            <TextInput labelText="Enumeration District" bind:value={enumerationDistrict} />
+        </Column>
+        <Column>
+            <TextInput labelText="Folio #" bind:value={folio} />
+        </Column>
+        <Column>
+            <TextInput labelText="Page #" bind:value={pageNumber} />
+        </Column>
+    </Row>
+    <Row class="mb-4">
+        <Column>
+            <TextInput labelText="Site Accessed" bind:value={siteURL} />
+        </Column>
+        <Column>
+            <TextInput 
+                labelText="Date Accessed"
+                placeholder="mm/dd/yyyy"
+                bind:value={dateAccessed} 
+                invalid={!datePattern.test(dateAccessed)}
+                invalidText={!datePattern.test(dateAccessed) ? "Please enter a date" : ""}
+                />
+        </Column>
+    </Row>
+    <!-- CITATION RESULT -->
+    <Row>
+        <Column>
+            <ClickableTile on:click={copyToClipboard}>
+                <div class="flex justify-between">
+                    <span>{`${fatherFirstName} ${motherFirstName != "" ? "and " + motherFirstName : ""} ${lastName} household, ${city != "" ? city : ""}${city == "" ? county + " County" : ", " + county}, ${state}, US Federal ${censusYear} Census, ${enumerationDistrict != "" ? "enumeration district " + enumerationDistrict + ", " : ""}${folio != "" ? "folio " + folio : ""}${pageNumber != "" ? ", page " + pageNumber : ""}, ${siteURL}, accessed ${moment(dateAccessed).format('D MMMM YYYY')}.`}</span>
+                    <Tooltip bind:open={copied} icon={Copy} align="end">
+                        <p>Copied!</p>
+                    </Tooltip>
                 </div>
-                <!-- Mother First Name -->
-                <div class="w-[50%]">
-                    <label for="name" class="inline-block text-sm font-medium text-gray-700">Mother's First Name</label>
-                    <div class="mt-1">
-                    <input type="text" bind:value={motherFirstName} name="name" id="name" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" aria-describedby="name-description">
-                    </div>
-                </div>
-            </div>
-            <!-- Last Name -->
-            <div class="w-[100%] mb-3 md:w-[35%] md:mb-0">
-                <label for="name" class="inline-block text-sm font-medium text-gray-700">Last Name</label>
-                <div class="mt-1">
-                <input type="text" bind:value={lastName} name="name" id="name" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" aria-describedby="name-description">
-                </div>
-            </div>
-        </div>
-
-        <!-- Place Section -->
-        <div class="flex gap-3 mb-3 md:mb-2">
-            <!-- City -->
-            <div class="w-[35%]">
-                <label for="name" class="inline-block text-sm font-medium text-gray-700">City</label>
-                <div class="mt-1">
-                <input type="text" bind:value={city} name="name" id="name" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" aria-describedby="name-description">
-                </div>
-            </div>
-            <!-- County -->
-            <div class="w-[35%]">
-                <label for="name" class="inline-block text-sm font-medium text-gray-700">County</label>
-                <div class="mt-1">
-                <input type="text" bind:value={county} name="name" id="name" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" aria-describedby="name-description">
-                </div>
-            </div>
-            <!-- State -->
-            <div class="w-[35%]">
-                <label for="name" class="inline-block text-sm font-medium text-gray-700">State</label>
-                <div class="mt-1">
-                <input type="text" bind:value={state} name="name" id="name" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" aria-describedby="name-description">
-                </div>
-            </div>
-        </div>
-
-        <!-- Census Section -->
-        <div class="flex flex-col md:flex-row gap-3 mb-2 w-[100%]">
-            <div class="flex mb-3 gap-2 md:mb-0 md:w-[50%]">
-                <!-- Census Year -->
-                <div class="w-[50%]">
-                    <label for="name" class="inline-block text-sm font-medium text-gray-700">Census Year</label>
-                    <div class="mt-1">
-                    <input type="text" bind:value={censusYear} name="name" id="name" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" aria-describedby="name-description">
-                    </div>
-                </div>
-                <!-- Enumeration District -->
-                <div class="w-[50%]">
-                    <label for="name" class="inline-block text-sm font-medium text-gray-700">Enumeration District</label>
-                    <div class="mt-1">
-                    <input type="text" bind:value={ed} name="name" id="name" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" aria-describedby="name-description">
-                    </div>
-                </div>
-            </div>
-            <div class="flex mb-3 gap-2 md:mb-0 md:w-[50%]">
-                <!-- Folio -->
-                <div class="w-[50%]">
-                    <label for="name" class="inline-block text-sm font-medium text-gray-700">Folio #</label>
-                    <div class="mt-1">
-                    <input type="text" bind:value={folio} name="name" id="name" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" aria-describedby="name-description">
-                    </div>
-                </div>
-                <!-- Page -->
-                <div class="w-[50%]">
-                    <label for="name" class="inline-block text-sm font-medium text-gray-700">Page #</label>
-                    <div class="mt-1">
-                    <input type="text" bind:value={page} name="name" id="name" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" aria-describedby="name-description">
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Site Section -->
-        <div class="flex flex-col md:flex-row gap-3 mb-2">
-            <!-- Site -->
-            <div class="w-[100%] mb-3 md:w-[35%] md:mb-0">
-                <label for="fID" class="block text-sm font-medium text-gray-700">Site Accessed</label>
-                <div class="mt-1">
-                <input type="text" bind:value={site} name="fID" id="fID" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" placeholder="ABCD-123" aria-describedby="fID-description">
-                </div>
-            </div>
-            <!-- Date Accessed -->
-            <div>
-                <p class="block text-sm font-medium text-gray-700">Date Accessed</p>
-                <DatePicker datePickerType="single" bind:value={date} on:change light>
-                    <DatePickerInput  
-                        hideLabel
-                        class="w-full text-sm font-medium text-gray-700 border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
-                        labelText="Meeting date"
-                        placeholder="mm/dd/yyyy"
-                    />
-                </DatePicker>
-            </div>
-        </div>
-        
-    </div>
-    <button 
-      on:click={copyToClipboard}
-      class="mt-4 w-full inline-flex text-left rounded-md hover:bg-gray-200 transition bg-gray-100 px-3 py-2 text-sm font-medium text-gray-800">
-      {`${fatherFirstName} ${motherFirstName != "" ? "and " + motherFirstName : ""} ${lastName} household, ${city != "" ? city : ""}${city == "" ? county + " County" : ", " + county}, ${state}, US Federal ${censusYear} Census, ${ed != "" ? "enumeration district " + ed + ", " : ""}${folio != "" ? "folio " + folio : ""}${page != "" ? ", page " + page : ""}, ${site}, accessed ${moment(date).format('D MMMM YYYY')}.`}
-    </button>
-    <p class="{!copied ? "hidden" : ""} text-sm text-green-600 mt-2 font-bold">Copied Citation!</p>
-</div>
-
-<style>
-    #results {
-        border: 1px solid #D1D5DB;
-    }
-</style>
+                
+            </ClickableTile>
+        </Column>
+    </Row>
+</Grid>

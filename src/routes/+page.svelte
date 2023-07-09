@@ -1,12 +1,16 @@
+<svelte:head>
+    <title>Basic Citation Builder - F.H Tools</title>
+</svelte:head>
+
 <script lang="js">
 	// Import Carbon Components
 	import { Dropdown } from "carbon-components-svelte";
 
 	// Import Layout
 	import Sidebar from '$lib/Sidebar.svelte';
-	import SidebarNew from "$lib/SidebarNew.svelte";
 
 	// Import Citations
+	import CitationContainer from '$lib/CitationContainer.svelte';
     import Census from '$lib/basic_citations/Census.svelte';
     import Church from '$lib/basic_citations/Church.svelte';
     import CivilRecord from '$lib/basic_citations/CivilRecord.svelte';
@@ -33,7 +37,7 @@
 	]
 </script>
 
-<SidebarNew selected="home">
+<Sidebar selected="home">
 	<main slot="container">
 		<!-- HEADER -->
 		<section class="mx-auto max-w-7xl">
@@ -41,7 +45,7 @@
 		</section>
 		<!-- MAIN CONTENT -->
 		<section class="mx-auto max-w-7xl">
-			<div class="py-4">
+			<div class="py-2">
 				<!-- SELECT CITATION TYPE -->
 				<Dropdown
 					titleText="Citation Type"
@@ -51,21 +55,23 @@
 					bind:selectedId={citationType}
 				/>
 				
-				<!-- DISPLAY CITATION -->
-				{#if citationType == "tree-personal"}
-					<FamilyTreePersonal />
-				{:else if citationType == "tree-household"}
-					<FamilyTreeHousehold />
-				{:else if citationType == "census"}
-					<Census />
-				{:else if citationType == "church"}
-					<Church />
-				{:else if citationType == "civil"}
-					<CivilRecord />
-				{:else if citationType == "knowledge-personal"}
-					<PersonalKnowledge />
-				{/if}
+				<CitationContainer>
+					<!-- DISPLAY CITATION -->
+					{#if citationType == "tree-personal"}
+						<FamilyTreePersonal />
+					{:else if citationType == "tree-household"}
+						<FamilyTreeHousehold />
+					{:else if citationType == "census"}
+						<Census />
+					{:else if citationType == "church"}
+						<Church />
+					{:else if citationType == "civil"}
+						<CivilRecord />
+					{:else if citationType == "knowledge-personal"}
+						<PersonalKnowledge />
+					{/if}
+				</CitationContainer>
 			</div>
 		</section>
 	</main>
-</SidebarNew>
+</Sidebar>

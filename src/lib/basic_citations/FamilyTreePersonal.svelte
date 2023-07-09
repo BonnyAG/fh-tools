@@ -1,59 +1,76 @@
 <script>
-    import "carbon-components-svelte/css/all.css";
+    // Import moment library
     import moment from 'moment';
-    import { DatePicker, DatePickerInput } from "carbon-components-svelte";
 
-    let name = "John Doe";
-    let id = "ABCD-123";
-    let date = new Date();
+    // Import Components
+    import { 
+        TextInput,
+        Grid,
+        Row,
+        Column,
+        ClickableTile,
+        Tooltip 
+    } from "carbon-components-svelte";
+    
+    // Import Icons
+    import Copy from "carbon-icons-svelte/lib/Copy.svelte";
+
+    // Citation Variables
+    /** @type {string} */
+    let ancestorName = "John Doe";
+    /** @type {string} */
+    let familySearchId = "ABCD-123";
+    /** @type {string} */
+    let dateAccessed = moment().format("MM/DD/YYYY");
+
+    // Utility Variables
+    /** Defines when the tooltip is diplayed 
+     * @type {boolean} */
     let copied = false;
+    /** Regex pattern for dates
+     * @type {RegExp}
+    */
+   const datePattern = /\d{1,2}\/\d{1,2}\/\d{2,4}/
 
+    /** Copies the content of the citation to the clipboard */
     function copyToClipboard() {
-        let citation = `${name} (${id}), FamilyTree, www.familysearch.org, accessed ${moment(date).format('D MMMM YYYY')}.`;
+        let citation = `${ancestorName} (${familySearchId}), FamilyTree, www.familysearch.org, accessed ${moment(dateAccessed).format('D MMMM YYYY')}.`;
         copied = true;
         navigator.clipboard.writeText(citation);
     }
 </script>
 
-<div id="results" class="mt-4 p-4 border border-gray-300 rounded-md shadow-sm">
-    <div class="flex flex-col md:flex-row sm:gap-3">
-        <!-- Name -->
-        <div class="w-[100%] mb-3 sm:w-[35%] sm:mb-0">
-            <label for="name" class="inline-block text-sm font-medium text-gray-700">Ancestor's Name</label>
-            <div class="mt-1">
-            <input type="text" bind:value={name} name="name" id="name" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" placeholder="John Doe" aria-describedby="name-description">
-            </div>
-        </div>
-        <!-- FamilySearch ID -->
-        <div class="w-[100%] mb-3 sm:w-[35%] sm:mb-0">
-            <label for="fID" class="block text-sm font-medium text-gray-700">FamilySearch ID</label>
-            <div class="mt-1">
-            <input type="text" bind:value={id} name="fID" id="fID" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" placeholder="ABCD-123" aria-describedby="fID-description">
-            </div>
-        </div>
-        <!-- Date Accessed -->
-        <div>
-            <p class="block text-sm font-medium text-gray-700">Date Accessed</p>
-            <DatePicker datePickerType="single" bind:value={date} on:change light>
-                <DatePickerInput  
-                    hideLabel
-                    class="w-full text-sm font-medium text-gray-700 border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
-                    labelText="Meeting date"
-                    placeholder="mm/dd/yyyy"
-                />
-            </DatePicker>
-        </div>
-    </div>
-    <button 
-      on:click={copyToClipboard}
-      class="mt-4 w-full inline-flex text-left rounded-md hover:bg-gray-200 transition bg-gray-100 px-3 py-2 text-sm font-medium text-gray-800">
-      {`${name} (${id}), FamilyTree, www.familysearch.org, accessed ${moment(date).format('D MMMM YYYY')}.`}
-    </button>
-    <p class="{!copied ? "hidden" : ""} text-sm text-green-600 mt-2 font-bold">Copied Citation!</p>
-</div>
-
-<style>
-    #results {
-        border: 1px solid #D1D5DB;
-    }
-</style>
+<Grid fullWidth noGutter>
+    <!-- CITATION CONTENT -->
+    <Row>
+        <Column>
+            <TextInput labelText="Ancestor's Name" placeholder="Enter user name..." bind:value={ancestorName} />    
+        </Column>
+        <Column>
+            <TextInput labelText="FamilySearch ID" placeholder="Enter user name..." bind:value={familySearchId} />
+        </Column>
+        <Column>
+            <TextInput 
+                labelText="Date Accessed"
+                placeholder="mm/dd/yyyy"
+                bind:value={dateAccessed} 
+                invalid={!datePattern.test(dateAccessed)}
+                invalidText={!datePattern.test(dateAccessed) ? "Please enter a date" : ""}
+            />
+        </Column>
+    </Row>
+    <!-- CITATION RESULT -->
+    <Row class="mt-4">
+        <Column>
+            <ClickableTile on:click={copyToClipboard}>
+                <div class="flex justify-between">
+                    <span>{`${ancestorName} (${familySearchId}), FamilyTree, www.familysearch.org, accessed ${moment(dateAccessed).format('D MMMM YYYY')}.`}</span>
+                    <Tooltip bind:open={copied} icon={Copy} align="end">
+                        <p>Copied!</p>
+                    </Tooltip>
+                </div>
+                
+            </ClickableTile>
+        </Column>
+    </Row>
+</Grid>

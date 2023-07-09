@@ -1,104 +1,144 @@
 <script>
-    import "carbon-components-svelte/css/all.css";
+    // Import libraries
     import moment from 'moment';
-    import { DatePicker, DatePickerInput } from "carbon-components-svelte";
 
+    // Import Components
+    import { 
+        Dropdown,
+        TextInput,
+        Grid,
+        Row,
+        Column,
+        ClickableTile,
+        Tooltip,
+        Toggle
+    } from "carbon-components-svelte";
+
+    // Import Icons
+    import Copy from "carbon-icons-svelte/lib/Copy.svelte";
+
+    // Citation Variables
+    /** @type {string} */
     let type = "interview";
+    /** @type {string} */
     let interviewee = "John Doe";
+    /** @type {string} */
     let interviewer = "James Robert"
-    let date = new Date();
-    let city = "Eden";
-    let county = "Graham";
+    /** @type {string} */
+    let dateOfInterview = moment().format('MM/DD/YYYY');
+    /** @type {string} */
+    let localCity = "Eden";
+    /** @type {string} */
+    let localCounty = "Graham";
+    /** @type {string} */
     let state = "Arizona";
-    let copied = false;
+    /** @type {string} */
+    let internationalCity = "Neydens";
+    /** @type {string} */
+    let internationalCounty = "Haute-Savoie";
+    /** @type {string} */
+    let region = "Auvergne-Rhônes Alpes"
+    /** @type {string} */
+    let country = "France"
 
+    // Utility Variables
+    /** Defines when the tooltip is diplayed 
+     * @type {boolean} */
+     let copied = false;
+    /** @type {boolean} */
+    let internationalMode = false;
+    /** List of all event types
+	 * @enum
+	 * @type {{id: string, text: string}[]}
+	*/
+	const EVENT_TYPES = [
+		{ id: "interview", text: "Interview"},
+		{ id: "email", text: "Email"},
+	]
+    /** Regex pattern for dates
+     * @type {RegExp}
+    */
+    const datePattern = /\d{1,2}\/\d{1,2}\/\d{2,4}/
+
+    /** Copies the content of the citation to the clipboard */
     function copyToClipboard() {
-        let citation = `Personal ${type == "interview" ? "Interview of" : "Email from"} ${interviewee} ${type == "interview" ? "by" : "to"} ${interviewer} on ${moment(date).format('D MMMM YYYY')}, in possession of ${interviewer}, [address for private use], ${city != "" ? city : ""}${city == "" ? county + " County" : ", " + county}, ${state}.`
-        /*let citation = `Personal ${type == "interview" ? "Interview of" : "Email from"} ${interviewee} ${type == "interview" ? "by" : "to"} ${interviewer} on ${moment(date).format('D MMMM YYYY')}, in possession of ${interviewer}, [address for private use], ${city != "" ? city : ""}${city == "" ? county + " County" : ", " + county}, ${state}.`
-        copied = true;*/
+        let address = internationalMode ? `${internationalCity != "" ? internationalCity : ""}${internationalCounty == "" ? internationalCounty + " County" : ", " + internationalCounty}, ${region}, ${country}` : `${localCity != "" ? localCity : ""}${localCounty == "" ? localCounty + " County" : ", " + localCounty}, ${state}`
+        let citation = `Personal ${type == "interview" ? "Interview of" : "Email from"} ${interviewee} ${type == "interview" ? "by" : "to"} ${interviewer} on ${moment(dateOfInterview).format('D MMMM YYYY')}, in possession of ${interviewer}, [address for private use], ${address}.`
+        copied = true;
         navigator.clipboard.writeText(citation);
     }
 </script>
 
-<div id="results" class="mt-4 p-4 border border-gray-300 rounded-md shadow-sm">
-    <div >
-        <!-- Interview Section -->
-        <div class="flex flex-col md:flex-row gap-3 mb-2">
-            <div class="flex gap-2">
-                <!-- Type of Personal Knowledge -->
-                <div class="w-[100%] md:w-auto">
-                    <label for="type" class="block text-sm font-medium text-gray-700">Type</label>
-                    <select bind:value={type} id="type" name="type" class="mt-1 block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-blue-500 focus:outline-none focus:ring-blue-500 sm:text-sm">
-                    <option value="interview" selected>Interview</option>
-                    <option value="email">Email</option>
-                    </select>
+<Grid fullWidth noGutter>
+    <!-- CITATION CONTENT -->
+    <Row class="mb-3">
+        <Column>
+            <Dropdown
+                titleText="Event Type"
+                placeholder="Select Event Type"
+                items={EVENT_TYPES}
+                bind:selectedId={type}
+			/>
+        </Column>
+        <Column>
+            <TextInput labelText="Interviewee" bind:value={interviewee} />    
+        </Column>
+        <Column>
+            <TextInput labelText="Interviewer" bind:value={interviewer} />
+        </Column>
+        <Column>
+            <TextInput 
+                labelText="Interview Date"
+                placeholder="mm/dd/yyyy"
+                bind:value={dateOfInterview} 
+                invalid={!datePattern.test(dateOfInterview)}
+                invalidText={!datePattern.test(dateOfInterview) ? "Please enter a date" : ""}
+            />
+        </Column>
+    </Row>
+    <Row class="mb-1">
+        <Column>
+            <Toggle size="sm" hideLabel labelA="International Address" labelB="International Address" bind:toggled={internationalMode}/>
+        </Column>
+    </Row>
+    <Row class="">
+        {#if internationalMode}
+            <Column>
+                <TextInput labelText="City" bind:value={internationalCity} />
+            </Column>
+            <Column>
+                <TextInput labelText="County" bind:value={internationalCounty} />
+            </Column>
+            <Column>
+                <TextInput labelText="Region" bind:value={region} />
+            </Column>
+            <Column>
+                <TextInput labelText="Country" bind:value={country} />
+            </Column>
+        {:else}
+            <Column>
+                <TextInput labelText="City" bind:value={localCity} />
+            </Column>
+            <Column>
+                <TextInput labelText="County" bind:value={localCounty} />
+            </Column>
+            <Column>
+                <TextInput labelText="State" bind:value={state} />
+            </Column>
+        {/if}
+    </Row>
+    <!-- CITATION RESULT -->
+    <Row class="mt-4">
+        <Column>
+            <ClickableTile on:click={copyToClipboard}>
+                <div class="flex justify-between">
+                    <span>{`Personal ${type == "interview" ? "Interview of" : "Email from"} ${interviewee} ${type == "interview" ? "by" : "to"} ${interviewer} on ${moment(dateOfInterview).format('D MMMM YYYY')}, in possession of ${interviewer}, [address for private use], ${internationalMode ? `${internationalCity != "" ? internationalCity : ""}${internationalCounty == "" ? internationalCounty + " County" : ", " + internationalCounty}, ${region}, ${country}` : `${localCity != "" ? localCity : ""}${localCounty == "" ? localCounty + " County" : ", " + localCounty}, ${state}`}.`}</span>
+                    <Tooltip bind:open={copied} icon={Copy} align="end">
+                        <p>Copied!</p>
+                    </Tooltip>
                 </div>
-                <!-- Interviewee -->
-                <div class="w-[50%] md:w-auto">
-                    <label for="name" class="inline-block text-sm font-medium text-gray-700">{type == "interview" ? "Interviewee" : "Email From"}</label>
-                    <div class="mt-1">
-                    <input type="text" bind:value={interviewee} name="name" id="name" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" placeholder="John Doe" aria-describedby="name-description">
-                    </div>
-                </div>
-                <!-- Interviewer -->
-                <div class="w-[50%] md:w-auto">
-                    <label for="fID" class="block text-sm font-medium text-gray-700">{type == "interview" ? "Interviewer" : "Email To"}</label>
-                    <div class="mt-1">
-                    <input type="text" bind:value={interviewer} name="fID" id="fID" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" placeholder="ABCD-123" aria-describedby="fID-description">
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Date of Interview -->
-            <div class="">
-                <p class="block text-sm font-medium text-gray-700">Interview Date</p>
-                <DatePicker datePickerType="single" bind:value={date} on:change light>
-                    <DatePickerInput  
-                        hideLabel
-                        class="w-full text-sm font-medium text-gray-700 border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
-                        labelText="Meeting date"
-                        placeholder="mm/dd/yyyy"
-                    />
-                </DatePicker>
-            </div>
-        </div>
-
-        <!-- Place Section -->
-        <div class="flex gap-3">
-            <!-- City -->
-            <div class="w-[35%]">
-                <label for="name" class="inline-block text-sm font-medium text-gray-700">City</label>
-                <div class="mt-1">
-                <input type="text" bind:value={city} name="name" id="name" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" aria-describedby="name-description">
-                </div>
-            </div>
-            <!-- County -->
-            <div class="w-[35%]">
-                <label for="name" class="inline-block text-sm font-medium text-gray-700">County</label>
-                <div class="mt-1">
-                <input type="text" bind:value={county} name="name" id="name" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" aria-describedby="name-description">
-                </div>
-            </div>
-            <!-- State -->
-            <div class="w-[35%]">
-                <label for="name" class="inline-block text-sm font-medium text-gray-700">State</label>
-                <div class="mt-1">
-                <input type="text" bind:value={state} name="name" id="name" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" aria-describedby="name-description">
-                </div>
-            </div>
-        </div>
-        
-    </div>
-    <button 
-      on:click={copyToClipboard}
-      class="mt-4 w-full inline-flex text-left rounded-md hover:bg-gray-200 transition bg-gray-100 px-3 py-2 text-sm font-medium text-gray-800">
-      {`Personal ${type == "interview" ? "Interview of" : "Email from"} ${interviewee} ${type == "interview" ? "by" : "to"} ${interviewer} on ${moment(date).format('D MMMM YYYY')}, in possession of ${interviewer}, [address for private use], ${city != "" ? city : ""}${city == "" ? county + " County" : ", " + county}, ${state}.`}
-    </button>
-    <p class="{!copied ? "hidden" : ""} text-sm text-green-600 mt-2 font-bold">Copied Citation!</p>
-</div>
-
-<style>
-    #results {
-        border: 1px solid #D1D5DB;
-    }
-</style>
+                
+            </ClickableTile>
+        </Column>
+    </Row>
+</Grid>
