@@ -36,6 +36,16 @@
 				<h2 class="text-xl bg-[#f4f4f4] p-2 font-semibold">Changelog</h2>
 				<hr/>
 				<div>
+					<h3 class="mt-2 text-lg font-bold text-gray-900">July 9, 2023</h3>
+					<UnorderedList class="pl-4">
+						<ListItem>Improvement: Added an international mode for the Personal Knowledge Citation.</ListItem>
+						<ListItem>Improvement: Refreshed design of the site (Used the Carbon Design Language).</ListItem>
+					</UnorderedList>
+					<h3 class="mt-2 text-lg font-bold text-gray-900">April 27, 2023</h3>
+					<UnorderedList class="pl-4">
+						<ListItem>Improvement: Default collection name changes for the civil record according to the type of record selected as long as it is still the default collection name.</ListItem>
+						<ListItem>Bug Fix: Type for Death Civil Record indicated 'confirmation' instead of 'death'</ListItem>
+					</UnorderedList>
 					<h3 class="mt-2 text-lg font-bold">April 14, 2023</h3>
 					<UnorderedList class="pl-4">
 						<ListItem>Split the Basic Citation Builder and the Advanced Citation Builder into two separate pages and URLs</ListItem>
