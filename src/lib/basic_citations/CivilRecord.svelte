@@ -61,6 +61,27 @@
         copied = true;
         navigator.clipboard.writeText(citation);
     }
+	
+	function updateDefaultCollection() {
+		if(collectionName.includes("Arizona") && collectionName.includes("1909-1917")) {
+			switch(type) {
+				case 'birth':
+					collectionName = "Arizona, births and christenings, 1909-1917";
+					break;
+				case 'marriage':
+					collectionName = "Arizona, marriages and divorces, 1909-1917";
+					break;
+				case 'divorce':
+					collectionName = "Arizona, marriages and divorces, 1909-1917";
+					break;
+				case 'death':
+					collectionName = "Arizona, deaths and burials, 1909-1917"
+					break;
+				default:
+					collectionName = "Arizona, births and christenings, 1909-1917";
+			}
+		}
+	}
 </script>
 
 <Grid fullWidth noGutter>
