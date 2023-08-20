@@ -30,14 +30,13 @@
 		{ id: "tree-personal", text: "Family Tree Personal"},
 		{ id: "tree-household", text: "Family Tree Household"},
 		{ id: "census", text: "Census Record"},
-		{ id: "church", text: "Church Record"},
-		{ id: "civil", text: "Civil Record"},
+		{ id: "church", text: "Church & Civil Record"},
 		{ id: "knowledge-personal", text: "Personal Knowledge"},
 	]
 </script>
 
 <Sidebar selected="home">
-	<div slot="container">
+	<div slot="container" class="h-auto">
 		<!-- HEADER -->
 		<section class="mx-auto md:max-w-7xl">
 			<h1 class="text-2xl font-semibold text-gray-900">Basic Citation Builder</h1>
