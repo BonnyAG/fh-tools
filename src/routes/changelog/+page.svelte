@@ -12,7 +12,7 @@
 <Sidebar selected="changelog">
 	<main slot="container">
 		<div class="mx-auto max-w-7xl">
-			<section>
+			<div>
 				<h2 class="text-xl bg-[#f4f4f4] p-2 mb-2 font-semibold">Frequently Asked Questions</h2>
 				<Accordion>
 					<AccordionItem title="How does the Citation Builder work?">
@@ -31,7 +31,7 @@
 						</p>
 					</AccordionItem>
 				</Accordion>
-			<section class="mt-4">
+				<section class="mt-4">
 				<h2 class="text-xl bg-[#f4f4f4] p-2 font-semibold">Changelog</h2>
 				<hr/>
 				<div>
@@ -76,6 +76,7 @@
 					/>
 				</div>
 			</section>
+			</div>
 		</div>
 	</main>
 </Sidebar>

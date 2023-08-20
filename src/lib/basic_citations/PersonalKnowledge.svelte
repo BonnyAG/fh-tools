@@ -91,7 +91,7 @@
     <Row class="mt-4 mb-2">
         <Column>
             <Result 
-                citation={`Personal ${type == "interview" ? "Interview of" : "Email from"} ${interviewee} ${type == "interview" ? "by" : "to"} ${interviewer} on ${moment(dateOfInterview).format('D MMMM YYYY')}, in possession of ${interviewer}, [address for private use], ${city !== "" ? city : ""}${county !== "" ? ", " + county : ""}${region !== "" ? ", " + region : ""}, ${internationalMode ? country : "United States"}.`}
+                citation={`Personal ${type === "interview" ? "Interview of" : "Email from"} ${interviewee} ${type === "interview" ? "by" : "to"} ${interviewer} on ${moment(dateOfInterview).format('D MMMM YYYY')}, in possession of ${interviewer}, [address for private use], ${city !== "" ? city : ""}${county !== "" ? ", " + county : ""}${region !== "" ? ", " + region : ""}, ${internationalMode ? country : "United States"}.`}
             />
         </Column>
     </Row>

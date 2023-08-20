@@ -85,7 +85,7 @@
     </Row>
     <Row class="mb-2">
         <Column>
-            <TextInput labelText="Census Year" placeholder="1880" class="min-w-[90px]"bind:value={censusYear} />
+            <TextInput labelText="Census Year" placeholder="1880" class="min-w-[90px]" bind:value={censusYear} />
         </Column>
         <Column>
             <TextInput labelText="Enumeration District" placeholder="2" class="min-w-[90px]" bind:value={enumerationDistrict} />
@@ -109,7 +109,7 @@
     <Row class="mb-2">
         <Column>
             <Result
-                citation={`${fatherFirstName} ${motherFirstName != "" ? "and " + motherFirstName : ""} ${lastName} household, ${city != "" ? city : ""}${city == "" ? county + " County" : ", " + county}, ${state}, ${internationalCensus ? country : "US Federal"} ${censusYear ? censusYear : ""} Census, ${enumerationDistrict != "" ? "enumeration district " + enumerationDistrict + ", " : ""}${folio != "" ? "folio " + folio : ""}${pageNumber != "" ? ", page " + pageNumber : ""}, ${siteURL}, accessed ${moment(dateAccessed).format('D MMMM YYYY')}.`}
+                citation={`${fatherFirstName} ${motherFirstName !== "" ? "and " + motherFirstName : ""} ${lastName} household, ${city !== "" ? city : ""}${city === "" ? county + " County" : ", " + county}, ${state}, ${internationalCensus ? country : "US Federal"} ${censusYear ? censusYear : ""} Census, ${enumerationDistrict !== "" ? "enumeration district " + enumerationDistrict + ", " : ""}${folio !== "" ? "folio " + folio : ""}${pageNumber !== "" ? ", page " + pageNumber : ""}, ${siteURL}, accessed ${moment(dateAccessed).format('D MMMM YYYY')}.`}
             />
         </Column>
     </Row>

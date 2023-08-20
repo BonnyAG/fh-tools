@@ -131,7 +131,7 @@
     <Row class="mb-2">
         <Column>
             <Result
-                citation={`${ancestorName} ${eventType}, ${moment(eventDate).format('D MMMM YYYY')}, ${city != "" ? city : ""}${city == "" ? county + " County" : ", " + county}${state !== "" ? ", " + state : ""}${internationalMode ? ", " + country : ""}, "${collectionName}", ${siteURL}, accessed ${moment(dateAccessed).format('D MMMM YYYY')}.`}
+                citation={`${ancestorName} ${eventType}, ${moment(eventDate).format('D MMMM YYYY')}, ${city !== "" ? city : ""}${city === "" ? county + " County" : ", " + county}${state !== "" ? ", " + state : ""}${internationalMode ? ", " + country : ""}, "${collectionName}", ${siteURL}, accessed ${moment(dateAccessed).format('D MMMM YYYY')}.`}
             />
         </Column>
     </Row>

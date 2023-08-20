@@ -7,7 +7,7 @@
     import {soundex} from 'soundex-code'
     import CitationContainer from "$lib/utilities/CitationContainer.svelte";
     import CitationResult from "$lib/utilities/CitationResult.svelte";
-    import {Column, Dropdown, Grid, Row} from "carbon-components-svelte";
+    import {Column, Grid, Row} from "carbon-components-svelte";
     import {TextInput} from 'carbon-components-svelte';
 
     let surname: string = "Smith";
