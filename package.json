@@ -26,6 +26,7 @@
 	"type": "module",
 	"dependencies": {
 		"carbon-components-svelte": "^0.73.5",
-		"moment": "^2.29.4"
+		"moment": "^2.29.4",
+		"soundex-code": "^2.0.1"
 	}
 }

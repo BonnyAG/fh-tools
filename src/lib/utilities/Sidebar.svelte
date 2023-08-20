@@ -1,12 +1,12 @@
 <script>
-    import {
-      Header,
-      SideNav,
-      SideNavItems,
-      SideNavLink,
-      SkipToContent,
-      Content,
-    } from "carbon-components-svelte";
+  import {
+    Header,
+    SideNav,
+    SideNavItems,
+    SideNavLink,
+    SkipToContent,
+    Content,
+  } from "carbon-components-svelte";
 
     // Import icons
     import DocumentAdd from "carbon-icons-svelte/lib/DocumentAdd.svelte";
@@ -35,10 +35,9 @@
       <img class="mr-3" width="42px" height="42px" src={logo} alt="F.H. Tools Logo"/>
       <h2 class="text-white font-md">F.H Tools</h2>
     </a>
-    
   </Header>
   
-  <SideNav ariaLabel="Sidebar Navigation Menu" rail bind:isOpen={isSideNavOpen}>
+  <SideNav ariaLabel="Sidebar Navigation Menu" class="z-10" bind:isOpen={isSideNavOpen}>
     <SideNavItems>
       {#if selected === "home"}
         <SideNavLink icon={DocumentAdd} text="Basic Citation Builder" href="/" isSelected />
@@ -57,8 +56,7 @@
       {/if}
     </SideNavItems>
   </SideNav>
-  
-  <Content>
-    <slot name="container"/>
-  </Content>
-  
+
+<Content class={isSideNavOpen ? "overflow-hidden" : ""}>
+  <slot name="container"/>
+</Content>

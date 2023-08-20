@@ -36,6 +36,16 @@
 				<hr/>
 				<div>
 					<ChangelogLine
+							date="August 19, 2023"
+							lines={[
+								{type: "new", text: "Added a \"Clear Form\" button at the bottom of every citation template"},
+								{type: "improvement", text: "Added an international option for all citations requiring an address"},
+								{type: "change", text: "Switched from a custom algorithm for Soundex conversion to the open source words/soundex-code library"},
+								{type: "change", text: "Combined the Church and Civil Record Templates"},
+								{type: "change", text: "Removed sample data to make it easier to start inputting your template"}
+						]}
+					/>
+					<ChangelogLine
 						date="July 10, 2023"
 						lines={[
 							{type: "bug", text: "Corrected Layout to be responsive"}
@@ -44,22 +54,22 @@
 					<ChangelogLine
 						date="July 9, 2023"
 						lines={[
-							{type: "improvement", text: "Added an international mode for the Personal Knowledge Citation."},
-							{type: "improvement", text: "Refreshed design of the changelog."},
-							{type: "improvement", text: "Refreshed design of the site (Used the Carbon Design Language)."}
+							{type: "improvement", text: "Added an international mode for the Personal Knowledge Citation"},
+							{type: "improvement", text: "Refreshed design of the changelog"},
+							{type: "improvement", text: "Refreshed design of the site (Used the Carbon Design Language)"}
 						]}
 					/>
 					<ChangelogLine
 						date="April 27, 2023"
 						lines={[
-							{type: "improvement", text: "Default collection name changes for the civil record according to the type of record selected as long as it is still the default collection name."},
+							{type: "improvement", text: "Default collection name changes for the civil record according to the type of record selected as long as it is still the default collection name"},
 							{type: "bug", text: "Type for Death Civil Record indicated 'confirmation' instead of 'death'"},
 						]}
 					/>
 					<ChangelogLine
 						date="April 14, 2023"
 						lines={[
-							{type: "change", text: "Split the Basic Citation Builder and the Advanced Citation Builder into two separate pages and URLs."},
+							{type: "change", text: "Split the Basic Citation Builder and the Advanced Citation Builder into two separate pages and URLs"},
 							{type: "new", text: "Added a Soundex Converter"},
 							{type: "new", text: "Added an Updates and FAQ page"}
 						]}
