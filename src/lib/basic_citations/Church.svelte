@@ -25,6 +25,7 @@
     let state: string;
     let country: string;
     let collectionName: string;
+    let details: string;
     let siteURL: string = "www.ancestry.com"
     let dateAccessed: string = moment().format("MM/DD/YYYY");
 
@@ -59,6 +60,7 @@
         state = "";
         country = "";
         collectionName = "";
+        details = "";
         siteURL = "";
         dateAccessed = moment().format("MM/DD/YYYY");
     }
@@ -70,8 +72,14 @@
         <Column>
             <TextInput labelText="Ancestor's Name" placeholder="John Doe" class="min-w-[140px]" bind:value={ancestorName} />
         </Column>
+
+    </Row>
+    <Row class="mb-2">
         <Column class="mt-2 sm:mt-0">
             <TextInput labelText="Collection Name" placeholder="Arizona, births and christenings, 1909-1917" class="min-w-[140px]" bind:value={collectionName} />
+        </Column>
+        <Column class="mt-2 sm:mt-0">
+            <TextInput labelText="Collection Details" placeholder="Film #, Book #, Volume #, Page #..." class="min-w-[140px]" bind:value={details} />
         </Column>
     </Row>
     <Row class="mb-3">
@@ -131,7 +139,7 @@
     <Row class="mb-2">
         <Column>
             <Result
-                citation={`${ancestorName} ${eventType}, ${moment(eventDate).format('D MMMM YYYY')}, ${city !== "" ? city : ""}${city === "" ? county + " County" : ", " + county}${state !== "" ? ", " + state : ""}${internationalMode ? ", " + country : ""}, "${collectionName}", ${siteURL}, accessed ${moment(dateAccessed).format('D MMMM YYYY')}.`}
+                citation={`${ancestorName} ${eventType}, ${moment(eventDate).format('D MMMM YYYY')}, ${city !== "" ? city : ""}${city === "" ? county + " County" : ", " + county}${state !== "" ? ", " + state : ""}${internationalMode ? ", " + country : ""}, "${collectionName}"${details ? `, ${details}` : ""}, ${siteURL}, accessed ${moment(dateAccessed).format('D MMMM YYYY')}.`}
             />
         </Column>
     </Row>
