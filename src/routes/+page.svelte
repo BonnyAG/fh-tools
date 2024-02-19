@@ -16,6 +16,7 @@
     import FamilyTreeHousehold from '$lib/basic_citations/FamilyTreeHousehold.svelte';
     import FamilyTreePersonal from '$lib/basic_citations/FamilyTreePersonal.svelte'
 	import Newspaper from "$lib/basic_citations/Newspaper.svelte";
+	import FindAGrave from '$lib/basic_citations/FindAGrave.svelte';
     import PersonalKnowledge from '$lib/basic_citations/PersonalKnowledge.svelte';
 
 	/** Tracks which citation template is being displayed
@@ -32,7 +33,8 @@
 		{ id: "tree-household", text: "Family Tree Household"},
 		{ id: "census", text: "Census Record"},
 		{ id: "church", text: "Church & Civil Record"},
-		{ id : "newspaper", text: "Newspaper Article"},
+		{ id: "newspaper", text: "Newspaper Article"},
+		{ id: "findagrave", text: "Find A Grave Memorial"},
 		{ id: "knowledge-personal", text: "Personal Knowledge"},
 	]
 </script>
@@ -67,6 +69,8 @@
 						<Church />
 					{:else if citationType === "newspaper"}
 						<Newspaper />
+					{:else if citationType === "findagrave"}
+						<FindAGrave />
 					{:else if citationType === "knowledge-personal"}
 						<PersonalKnowledge />
 					{/if}
