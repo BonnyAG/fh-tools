@@ -22,7 +22,7 @@
 	/** Tracks which citation template is being displayed
 	 * @type {string} 
 	*/
-	let citationType = "tree-personal";
+	let citationType = $state("tree-personal");
 
 	/** List of all citation options
 	 * @const
@@ -40,42 +40,44 @@
 </script>
 
 <Sidebar selected="home">
-	<div slot="container" class="h-auto">
-		<!-- HEADER -->
-		<section class="mx-auto md:max-w-7xl">
-			<h1 class="text-2xl font-semibold text-gray-900">Basic Citation Builder</h1>
-		</section>
-		<!-- MAIN CONTENT -->
-		<section class="mx-auto md:max-w-7xl">
-			<div class="py-1">
-				<!-- SELECT CITATION TYPE -->
-				<Dropdown
-					titleText="Citation Type"
-					placeholder="Select citation type"
-					items={CITATION_OPTIONS}
-					size="xl"
-					bind:selectedId={citationType}
-				/>
-				
-				<CitationContainer>
-					<!-- DISPLAY CITATION -->
-					{#if citationType === "tree-personal"}
-						<FamilyTreePersonal />
-					{:else if citationType === "tree-household"}
-						<FamilyTreeHousehold />
-					{:else if citationType === "census"}
-						<Census />
-					{:else if citationType === "church"}
-						<Church />
-					{:else if citationType === "newspaper"}
-						<Newspaper />
-					{:else if citationType === "findagrave"}
-						<FindAGrave />
-					{:else if citationType === "knowledge-personal"}
-						<PersonalKnowledge />
-					{/if}
-				</CitationContainer>
-			</div>
-		</section>
-	</div>
+	{#snippet container()}
+		<div  class="h-auto">
+			<!-- HEADER -->
+			<section class="mx-auto md:max-w-7xl">
+				<h1 class="text-2xl font-semibold text-gray-900">Basic Citation Builder</h1>
+			</section>
+			<!-- MAIN CONTENT -->
+			<section class="mx-auto md:max-w-7xl">
+				<div class="py-1">
+					<!-- SELECT CITATION TYPE -->
+					<Dropdown
+						titleText="Citation Type"
+						placeholder="Select citation type"
+						items={CITATION_OPTIONS}
+						size="xl"
+						bind:selectedId={citationType}
+					/>
+					
+					<CitationContainer>
+						<!-- DISPLAY CITATION -->
+						{#if citationType === "tree-personal"}
+							<FamilyTreePersonal />
+						{:else if citationType === "tree-household"}
+							<FamilyTreeHousehold />
+						{:else if citationType === "census"}
+							<Census />
+						{:else if citationType === "church"}
+							<Church />
+						{:else if citationType === "newspaper"}
+							<Newspaper />
+						{:else if citationType === "findagrave"}
+							<FindAGrave />
+						{:else if citationType === "knowledge-personal"}
+							<PersonalKnowledge />
+						{/if}
+					</CitationContainer>
+				</div>
+			</section>
+		</div>
+	{/snippet}
 </Sidebar>

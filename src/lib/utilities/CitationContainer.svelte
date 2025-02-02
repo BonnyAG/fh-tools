@@ -1,3 +1,11 @@
+<script lang="ts">
+    interface Props {
+        children?: import('svelte').Snippet;
+    }
+
+    let { children }: Props = $props();
+</script>
+
 <style>
     main {
         border-width: 1px !important;
@@ -6,5 +14,5 @@
 </style>
 
 <main class="mt-4 p-4 shadow-md">
-    <slot />
+    {@render children?.()}
 </main>

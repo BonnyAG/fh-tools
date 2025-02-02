@@ -30,7 +30,7 @@
 	]
 	
 	// Define variables
-	let citationType, citationTemplate;
+	let citationType = $state(), citationTemplate = $state();
 	
 </script>
 

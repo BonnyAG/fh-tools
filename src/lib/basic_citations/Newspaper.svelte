@@ -14,16 +14,16 @@
     import Close from "carbon-icons-svelte/lib/Close.svelte";
 
     // Citation Variables
-    let ancestorName: string;
-    let articleType: string;
-    let publication: string;
-    let dateOfArticle: string;
-    let articleTitle: string;
-    let pageNumber: string;
-    let columnNumber: string;
-    let databaseName: string;
-    let databaseURL: string;
-    let dateAccessed: string = moment().format("MM/DD/YYYY");
+    let ancestorName: string = $state();
+    let articleType: string = $state();
+    let publication: string = $state();
+    let dateOfArticle: string = $state();
+    let articleTitle: string = $state();
+    let pageNumber: string = $state();
+    let columnNumber: string = $state();
+    let databaseName: string = $state();
+    let databaseURL: string = $state();
+    let dateAccessed: string = $state(moment().format("MM/DD/YYYY"));
 
     function clearValues() {
         ancestorName = "";

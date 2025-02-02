@@ -8,10 +8,16 @@
     */
    const datePattern = /\d{1,2}\/\d{1,2}\/\d{2,4}/
 
-   /** @type {string} */
-   export let date;
-   /** @type {string} */
-   export let label;
+   
+   
+   /**
+    * @typedef {Object} Props
+    * @property {string} date
+    * @property {string} label
+    */
+
+   /** @type {Props} */
+   let { date = $bindable(), label } = $props();
 </script>
 
 <TextInput 

@@ -1,10 +1,16 @@
 <script>
 	import { Tag } from "carbon-components-svelte";
 
-    /** @type {string} */
-    export let date;
-    /** @enum @type {{type:string, text:string}[]} */
-    export let lines;
+    
+    
+   /**
+    * @typedef {Object} Props
+    * @property {string} date
+    * @property {{type:string, text:string}[]} lines
+    */
+
+   /** @type {Props} */
+   let { date, lines } = $props();
 
    function getTagInfo(type) {
     switch (type) {

@@ -4,5 +4,7 @@
 </script>
 
 <Sidebar selected="advanced">
-	<AdvancedCitation slot="container"/>
+	{#snippet container()}
+		<AdvancedCitation />
+	{/snippet}
 </Sidebar>

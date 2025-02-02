@@ -14,9 +14,9 @@
     import Close from "carbon-icons-svelte/lib/Close.svelte";
 
     // Citation Variables
-    let ancestorName: string;
-    let familySearchId: string;
-    let dateAccessed: string = moment().format("MM/DD/YYYY");
+    let ancestorName: string = $state();
+    let familySearchId: string = $state();
+    let dateAccessed: string = $state(moment().format("MM/DD/YYYY"));
 
     function clearValues() {
         ancestorName = "";

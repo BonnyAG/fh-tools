@@ -14,11 +14,11 @@
     import Close from "carbon-icons-svelte/lib/Close.svelte";
 
     // Citation Variables
-    let ancestorName: string;
-    let birthYear: number | null = null;
-    let deathYear: number | null = null;
-    let memorialId: string;
-    let dateAccessed: string = moment().format("MM/DD/YYYY");
+    let ancestorName: string = $state();
+    let birthYear: number | null = $state(null);
+    let deathYear: number | null = $state(null);
+    let memorialId: string = $state();
+    let dateAccessed: string = $state(moment().format("MM/DD/YYYY"));
 
     function clearValues() {
         ancestorName = "";

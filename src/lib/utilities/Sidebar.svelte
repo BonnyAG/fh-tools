@@ -19,16 +19,22 @@
     /** Tracks state for side navigation
      * @type {boolean}
      */
-    let isSideNavOpen = false;
+    let isSideNavOpen = $state(false);
     
-    /** Defines which page should be highlighted
-     * @type {string}
-     */
-    export let selected; 
+    
+  /**
+   * @typedef {Object} Props
+   * @property {string} selected - Defines which page should be highlighted
+   * @property {import('svelte').Snippet} [container]
+   */
+
+  /** @type {Props} */
+  let { selected, container } = $props();
   </script>
   
   <Header expandedByDefault class="py-3" company="" href="/" uiShellAriaLabel="Header Menu" bind:isSideNavOpen>
-    <svelte:fragment slot="skip-to-content">
+    <!-- @migration-task: migrate this slot by hand, `skip-to-content` is an invalid identifier -->
+  <svelte:fragment slot="skip-to-content">
       <SkipToContent />
     </svelte:fragment>
     <a href="/" class="px-3 py-2 flex content-center">
@@ -58,5 +64,5 @@
   </SideNav>
 
 <Content class={isSideNavOpen ? "overflow-hidden" : ""}>
-  <slot name="container"/>
+  {@render container?.()}
 </Content>

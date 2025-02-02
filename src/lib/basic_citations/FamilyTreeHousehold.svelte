@@ -14,10 +14,10 @@
     import Close from "carbon-icons-svelte/lib/Close.svelte";
 
     // Citation variables
-    let fatherName: string;
-    let motherName: string;
-    let familySearchId: string;
-    let dateAccessed: string = moment().format("MM/DD/YYYY");
+    let fatherName: string = $state();
+    let motherName: string = $state();
+    let familySearchId: string = $state();
+    let dateAccessed: string = $state(moment().format("MM/DD/YYYY"));
 
     function clearValues() {
         fatherName = "";

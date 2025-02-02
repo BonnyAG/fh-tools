@@ -17,17 +17,17 @@
     import Result from '$lib/utilities/CitationResult.svelte';
 
     // Citation Variables
-    let type: string = "interview";
-    let interviewee: string;
-    let interviewer: string;
-    let dateOfInterview: string = moment().format('MM/DD/YYYY');
-    let city: string;
-    let county: string;
-    let region: string;
-    let country: string;
+    let type: string = $state("interview");
+    let interviewee: string = $state();
+    let interviewer: string = $state();
+    let dateOfInterview: string = $state(moment().format('MM/DD/YYYY'));
+    let city: string = $state();
+    let county: string = $state();
+    let region: string = $state();
+    let country: string = $state();
 
     // Utility Variables
-    let internationalMode: boolean = false;
+    let internationalMode: boolean = $state(false);
 	const EVENT_TYPES: {id: string, text: string}[] = [
 		{ id: "interview", text: "Interview"},
 		{ id: "email", text: "Email"},

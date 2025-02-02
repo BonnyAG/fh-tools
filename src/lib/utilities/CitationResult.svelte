@@ -10,21 +10,24 @@
 
     /** Defines when the tooltip is diplayed 
      * @type {boolean} */
-    let copied = false;
-    /** @type {string} */
-    export let citation;
+    let copied = $state(false);
+    
 
-    /**
-   * Override the default copy behavior of using the navigator.clipboard.writeText API to copy text
-   * @type {(text: string) => void}
-   */
-    export let copy = async (citation) => {
+    
+   /**
+    * @typedef {Object} Props
+    * @property {string} citation
+    * @property {(text: string) => void} [copy] - Override the default copy behavior of using the navigator.clipboard.writeText API to copy text
+    */
+
+   /** @type {Props} */
+   let { citation, copy = async (citation) => {
         try {
             await navigator.clipboard.writeText(citation);
         } catch (e) {
             console.log(e);
         }
-    };
+    } } = $props();
 </script>
 
 <ClickableTile 
